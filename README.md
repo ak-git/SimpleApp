@@ -1,1 +1,1 @@
-# SimpleApp
+# Simple Java App with Docker support
