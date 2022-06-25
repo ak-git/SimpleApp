@@ -27,7 +27,7 @@ jacoco {
 ext {
     testNG = 'org.testng:testng:7.6.0'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
-    javaVersion = JavaVersion.VERSION_18
+    javaVersion = JavaVersion.VERSION_17
 }
 
 wrapper {
