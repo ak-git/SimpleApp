@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag a002k/simple-app:$(date +%s)
+      run: docker build -t a002k/simple-app:$(date +%s) .
