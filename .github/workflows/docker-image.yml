@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Execute Gradle build
-      run: ./gradlew build
+      run: gradle build
     - name: Build the Docker image
       run: docker build -t a002k/simple-app:$(date +%s) .
