@@ -17,5 +17,7 @@ jobs:
           java-version: 18
       - name: Execute Gradle build
         run: gradle build
+      - name: Login to Docker Hub
+        run: docker login -u a002k -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build the Docker image
         run: docker build -t a002k/simple-app:$(date +%s) .
