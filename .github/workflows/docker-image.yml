@@ -16,6 +16,6 @@ jobs:
           distribution: corretto
           java-version: 18
       - name: Set current date as env variable
-        run: echo "RELEASE_DATE::$(date +%s)" >> $GITHUB_ENV
+        run: echo "RELEASE_DATE=$(date +%s)" >> $GITHUB_ENV
       - name: Echo current date
         run: echo ${{ env.RELEASE_DATE }}
