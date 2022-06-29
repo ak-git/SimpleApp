@@ -15,8 +15,22 @@ jobs:
         with:
           distribution: corretto
           java-version: 18
-      - name: Execute Gradle build
-        run: gradle build
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          run: gradle build sonarqube --info
       - name: Set current date as env variable
         run: echo "RELEASE_DATE=$(date +%s)" >> $GITHUB_ENV
       - name: Echo current date
