@@ -30,7 +30,7 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: gradle build sonarqube --info
+        run: gradle build jacocoTestReport sonarqube --info
       - name: Set current date as env variable
         run: echo "RELEASE_DATE=$(date +%s)" >> $GITHUB_ENV
       - name: Echo current date
