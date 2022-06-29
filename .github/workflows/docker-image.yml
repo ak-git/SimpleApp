@@ -17,9 +17,7 @@ jobs:
         with:
           distribution: corretto
           java-version: 18
-      - name: Execute Gradle build
-        run: gradle build
-      - name: Login to Docker Hub
-        run: docker login -u a002k -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Set current date as env variable
-        run: echo $TAG_NAME
+        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Echo current date
+        run: echo ${{ env.NOW }}
