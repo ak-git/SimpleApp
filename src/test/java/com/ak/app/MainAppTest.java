@@ -1,10 +1,16 @@
 package com.ak.app;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class MainAppTest {
+class MainAppTest {
   @Test
-  public void testMain() {
-    MainApp.main(new String[] {});
+  void testMain() {
+    try {
+      MainApp.main(new String[] {});
+    }
+    catch (Exception ex) {
+      Assertions.fail(ex);
+    }
   }
 }
