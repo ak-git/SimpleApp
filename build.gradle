@@ -6,7 +6,7 @@ plugins {
     id "org.sonarqube" version '3.4.0.2513'
     id 'jacoco'
     id "application"
-    id "com.github.spotbugs" version '5.0.8'
+    id "com.github.spotbugs" version '5.0.9'
 }
 
 spotbugs {
@@ -43,13 +43,13 @@ ext {
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "7.4.2"
+    gradleVersion = "7.5"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2022.07.04'
+    version = '2022.07.17'
     apply plugin: 'idea'
     idea {
         module {

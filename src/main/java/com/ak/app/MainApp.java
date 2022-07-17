@@ -9,6 +9,6 @@ public class MainApp {
   }
 
   public static void main(@Nonnull String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "MainApp.main");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello!");
   }
 }
