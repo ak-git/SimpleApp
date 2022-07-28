@@ -1,4 +1,4 @@
-FROM openjdk:18.0.1.1
+FROM openjdk:18.0.2
 
 # Create a new app directory for my application files
 RUN mkdir /app
