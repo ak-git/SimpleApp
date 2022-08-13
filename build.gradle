@@ -1,5 +1,5 @@
 plugins {
-    id "org.javamodularity.moduleplugin" version '1.8.11'
+    id "org.javamodularity.moduleplugin" version '1.8.12'
     id 'java'
     id 'java-library'
     id 'idea'
@@ -36,20 +36,20 @@ jacoco {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.8.2'
+    test = 'org.junit:junit-bom:5.9.0'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_18
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "7.5"
+    gradleVersion = "7.5.1"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2022.07.28'
+    version = '2022.08.13'
     apply plugin: 'idea'
     idea {
         module {
