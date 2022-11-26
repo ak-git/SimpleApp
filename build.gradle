@@ -38,18 +38,18 @@ jacoco {
 ext {
     test = 'org.junit:junit-bom:5.9.1'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
-    javaVersion = JavaVersion.VERSION_18
+    javaVersion = JavaVersion.VERSION_19
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "7.5.1"
+    gradleVersion = "7.6"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2022.11.11'
+    version = '2022.11.26'
     apply plugin: 'idea'
     idea {
         module {
