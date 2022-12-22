@@ -1,8 +1,7 @@
 package com.ak.app;
 
-import java.util.logging.Logger;
-
 import javax.annotation.Nonnull;
+import java.util.logging.Logger;
 
 public class MainApp {
   private MainApp() {
