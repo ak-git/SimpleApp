@@ -1,4 +1,4 @@
-FROM openjdk:18.0.2
+FROM openjdk:19-jdk-slim
 
 # Create a new app directory for my application files
 RUN mkdir /app
