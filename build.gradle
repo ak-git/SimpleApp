@@ -3,7 +3,7 @@ plugins {
     id 'java'
     id 'java-library'
     id 'idea'
-    id "org.sonarqube" version '3.5.0.2730'
+    id "org.sonarqube" version '4.0.0.2929'
     id 'jacoco'
     id "application"
     id "com.github.spotbugs" version '5.0.13'
@@ -36,20 +36,20 @@ jacoco {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.9.1'
+    test = 'org.junit:junit-bom:5.9.2'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_19
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "7.6"
+    gradleVersion = "8.0.1"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.02.09'
+    version = '2023.02.22'
     apply plugin: 'idea'
     idea {
         module {
@@ -74,12 +74,6 @@ allprojects {
         mavenLocal()
         maven {
             url = 'https://plugins.gradle.org/m2/'
-        }
-    }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled true
         }
     }
 
