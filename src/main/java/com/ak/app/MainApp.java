@@ -8,6 +8,6 @@ public class MainApp {
   }
 
   public static void main(@Nonnull String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word!");
   }
 }
