@@ -27,7 +27,7 @@ sonar {
         property "sonar.organization", "ak-git"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.branch.name", "master"
-        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
     }
 }
 
