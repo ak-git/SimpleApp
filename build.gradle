@@ -21,7 +21,7 @@ spotbugsMain {
     }
 }
 
-sonarqube {
+sonar {
     properties {
         property "sonar.projectKey", "ak-git_SimpleApp"
         property "sonar.organization", "ak-git"
@@ -43,13 +43,13 @@ ext {
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.0.1"
+    gradleVersion = "8.0.2"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.02.27'
+    version = '2023.03.04'
     apply plugin: 'idea'
     idea {
         module {
@@ -74,6 +74,12 @@ allprojects {
         mavenLocal()
         maven {
             url = 'https://plugins.gradle.org/m2/'
+        }
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.required = true
         }
     }
 
