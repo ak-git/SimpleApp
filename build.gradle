@@ -34,20 +34,20 @@ sonar {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.9.2'
+    test = 'org.junit:junit-bom:5.9.3'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_20
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.1"
+    gradleVersion = "8.1.1"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.04.12'
+    version = '2023.04.27'
     apply plugin: 'idea'
     idea {
         module {
@@ -88,7 +88,7 @@ allprojects {
     dependencies {
         implementation jsr305
         testImplementation(platform(test))
-        testImplementation('org.junit.jupiter:junit-jupiter')
+        testImplementation('org.junit.jupiter:junit-jupiter:5.9.3')
     }
 
     test {
