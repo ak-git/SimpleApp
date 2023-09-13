@@ -3,11 +3,11 @@ plugins {
     id 'java'
     id 'java-library'
     id 'idea'
-    id "org.sonarqube" version '4.2.1.3168'
+    id "org.sonarqube" version '4.3.1.3277'
     id 'jacoco'
     id "application"
     id "com.github.spotbugs" version '5.0.14'
-    id "com.github.ben-manes.versions" version "0.47.0"
+    id "com.github.ben-manes.versions" version "0.48.0"
     id "nebula.lint" version "18.1.0"
 }
 
@@ -34,21 +34,21 @@ sonar {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.10.0-M1'
-    testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.0-M1'
+    test = 'org.junit:junit-bom:5.10.0'
+    testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.0'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_20
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.1.1"
+    gradleVersion = "8.3"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.06.25'
+    version = '2023.09.12'
     apply plugin: 'idea'
     idea {
         module {
