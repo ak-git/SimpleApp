@@ -8,6 +8,6 @@ public class MainApp {
   }
 
   public static void main(@Nonnull String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2023.09.12!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2023.10.11!");
   }
 }
