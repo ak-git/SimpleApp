@@ -36,6 +36,7 @@ sonar {
 
 ext {
     test = 'org.junit:junit-bom:5.10.1'
+    assertj = 'org.assertj:assertj-core:3.24.2'
     testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.1'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_20
@@ -81,6 +82,7 @@ allprojects {
         implementation jsr305
         testImplementation(platform(test))
         testImplementation testJupiter
+        testImplementation assertj
     }
 
     test {
