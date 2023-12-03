@@ -1,3 +1,5 @@
+import com.github.spotbugs.snom.Confidence
+
 plugins {
     id "org.javamodularity.moduleplugin" version '1.8.12'
     id 'java'
@@ -6,20 +8,19 @@ plugins {
     id "org.sonarqube" version '4.4.1.3373'
     id 'jacoco'
     id "application"
-    id "com.github.spotbugs" version '5.0.14'
+    id "com.github.spotbugs" version '6.0.1'
     id "com.github.ben-manes.versions" version "0.50.0"
-    id "nebula.lint" version "18.1.0"
+    id "nebula.lint" version "19.0.1"
 }
 
 spotbugs {
-    reportLevel = 'high'
+    reportLevel = Confidence.valueOf('HIGH')
 }
 
-spotbugsMain {
-    reports {
-        html {
-            stylesheet = 'fancy-hist.xsl'
-        }
+tasks.spotbugsMain {
+    reports.create("html") {
+        required = true
+        setStylesheet("fancy-hist.xsl")
     }
 }
 
@@ -42,24 +43,14 @@ ext {
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.4"
+    gradleVersion = "8.5"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.11.26'
+    version = '2023.12.03'
     apply plugin: 'idea'
-    idea {
-        module {
-            inheritOutputDirs = true
-        }
-    }
-
-    sourceSets {
-        main.output.resourcesDir = main.java.classesDirectory
-    }
-
     apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
