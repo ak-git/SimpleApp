@@ -8,7 +8,7 @@ plugins {
     id "org.sonarqube" version '4.4.1.3373'
     id 'jacoco'
     id "application"
-    id "com.github.spotbugs" version '6.0.1'
+    id "com.github.spotbugs" version '6.0.2'
     id "com.github.ben-manes.versions" version "0.50.0"
     id "nebula.lint" version "19.0.1"
 }
@@ -50,8 +50,17 @@ wrapper {
 
 allprojects {
     group = 'com.ak'
-    version = '2023.12.03'
+    version = '2023.12.06'
     apply plugin: 'idea'
+    idea {
+        module {
+            inheritOutputDirs = true
+        }
+    }
+    sourceSets {
+        main.output.resourcesDir = main.java.classesDirectory
+    }
+
     apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
@@ -63,9 +72,7 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
-        maven {
-            url = 'https://plugins.gradle.org/m2/'
-        }
+        gradlePluginPortal()
     }
 
     jacoco {
