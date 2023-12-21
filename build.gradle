@@ -1,25 +1,26 @@
+import com.github.spotbugs.snom.Confidence
+
 plugins {
-    id "org.javamodularity.moduleplugin" version '1.8.12'
     id 'java'
     id 'java-library'
+    id 'org.javamodularity.moduleplugin' version '1.8.12' apply false
     id 'idea'
-    id "org.sonarqube" version '4.3.1.3277'
+    id "org.sonarqube" version '4.4.1.3373'
     id 'jacoco'
     id "application"
-    id "com.github.spotbugs" version '5.0.14'
-    id "com.github.ben-manes.versions" version "0.48.0"
-    id "nebula.lint" version "18.1.0"
+    id "com.github.spotbugs" version '6.0.4'
+    id "com.github.ben-manes.versions" version "0.50.0"
+    id "nebula.lint" version "19.0.1"
 }
 
 spotbugs {
-    reportLevel = 'high'
+    reportLevel = Confidence.valueOf('HIGH')
 }
 
-spotbugsMain {
-    reports {
-        html {
-            stylesheet = 'fancy-hist.xsl'
-        }
+tasks.spotbugsMain {
+    reports.create("html") {
+        required = true
+        setStylesheet("fancy-hist.xsl")
     }
 }
 
@@ -34,28 +35,28 @@ sonar {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.10.0'
-    testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.0'
+    test = 'org.junit:junit-bom:5.10.1'
+    assertj = 'org.assertj:assertj-core:3.24.2'
+    testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.1'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_20
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.3"
+    gradleVersion = "8.5"
     distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2023.09.19'
+    version = '2023.12.21'
     apply plugin: 'idea'
     idea {
         module {
             inheritOutputDirs = true
         }
     }
-
     sourceSets {
         main.output.resourcesDir = main.java.classesDirectory
     }
@@ -71,9 +72,7 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
-        maven {
-            url = 'https://plugins.gradle.org/m2/'
-        }
+        gradlePluginPortal()
         maven {
             url = 'https://maven.sing-group.org/repository/maven/'
         }
@@ -98,6 +97,7 @@ allprojects {
         implementation 'org.apache.commons:commons-math3:3.6.1'
         testImplementation(platform(test))
         testImplementation testJupiter
+        testImplementation assertj
     }
 
     test {
