@@ -1,16 +1,15 @@
 import com.github.spotbugs.snom.Confidence
 
 plugins {
-    id 'java'
     id 'java-library'
     id 'org.javamodularity.moduleplugin' version '1.8.12' apply false
     id 'idea'
-    id "org.sonarqube" version '4.4.1.3373'
+    id 'org.sonarqube' version '4.4.1.3373'
     id 'jacoco'
-    id "application"
-    id "com.github.spotbugs" version '6.0.6'
-    id "com.github.ben-manes.versions" version "0.50.0"
-    id "nebula.lint" version "19.0.1"
+    id 'application'
+    id 'com.github.spotbugs' version '6.0.7'
+    id 'com.github.ben-manes.versions' version '0.51.0'
+    id 'nebula.lint' version '19.0.1'
 }
 
 spotbugs {
@@ -18,39 +17,39 @@ spotbugs {
 }
 
 tasks.spotbugsMain {
-    reports.create("html") {
+    reports.create('html') {
         required = true
-        setStylesheet("fancy-hist.xsl")
+        setStylesheet('fancy-hist.xsl')
     }
 }
 
 sonar {
     properties {
-        property "sonar.projectKey", "ak-git_SimpleApp"
-        property "sonar.organization", "ak-git"
-        property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.branch.name", "master"
+        property 'sonar.projectKey', 'ak-git_SimpleApp'
+        property 'sonar.organization', 'ak-git'
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.branch.name', 'master'
         property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
     }
 }
 
 ext {
     test = 'org.junit:junit-bom:5.10.1'
-    assertj = 'org.assertj:assertj-core:3.25.1'
+    assertj = 'org.assertj:assertj-core:3.25.2'
     testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.1'
     jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
-    javaVersion = JavaVersion.VERSION_20
+    javaVersion = JavaVersion.VERSION_21
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = "8.5"
-    distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
+    gradleVersion = '8.5'
+    distributionUrl = 'https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip'
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2024.01.22'
+    version = '2024.01.30'
     apply plugin: 'idea'
     idea {
         module {
@@ -61,7 +60,6 @@ allprojects {
         main.output.resourcesDir = main.java.classesDirectory
     }
 
-    apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'jacoco'
@@ -76,7 +74,7 @@ allprojects {
     }
 
     jacoco {
-        toolVersion = "0.8.9"
+        toolVersion = '0.8.9'
     }
 
     jacocoTestReport {
@@ -96,7 +94,7 @@ allprojects {
         forkEvery = 5
         useJUnitPlatform()
         testLogging {
-            events "passed", "skipped", "failed"
+            events 'passed', 'skipped', 'failed'
         }
         maxHeapSize = '1G'
     }
