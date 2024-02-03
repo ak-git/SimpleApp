@@ -2,14 +2,14 @@ import com.github.spotbugs.snom.Confidence
 
 plugins {
     id 'java-library'
-    id 'org.javamodularity.moduleplugin' version '1.8.12' apply false
     id 'idea'
-    id 'org.sonarqube' version '4.4.1.3373'
     id 'jacoco'
     id 'application'
-    id 'com.github.spotbugs' version '6.0.7'
-    id 'com.github.ben-manes.versions' version '0.51.0'
-    id 'nebula.lint' version '19.0.1'
+    alias(libs.plugins.javamodularity.moduleplugin) apply false
+    alias(libs.plugins.sonarqube)
+    alias(libs.plugins.spotbugs)
+    alias(libs.plugins.ben.manes.versions)
+    alias(libs.plugins.nebula.lint)
 }
 
 spotbugs {
@@ -34,22 +34,18 @@ sonar {
 }
 
 ext {
-    test = 'org.junit:junit-bom:5.10.1'
-    assertj = 'org.assertj:assertj-core:3.25.2'
-    testJupiter = 'org.junit.jupiter:junit-jupiter:5.10.1'
-    jsr305 = 'com.google.code.findbugs:jsr305:3.0.2'
     javaVersion = JavaVersion.VERSION_21
 }
 
 wrapper {
     description 'Setup the Gradle wrapper'
-    gradleVersion = '8.5'
+    gradleVersion = '8.6'
     distributionUrl = 'https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip'
 }
 
 allprojects {
     group = 'com.ak'
-    version = '2024.01.30'
+    version = '2024.02.03'
     apply plugin: 'idea'
     idea {
         module {
@@ -67,12 +63,6 @@ allprojects {
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
 
-    repositories {
-        mavenCentral()
-        mavenLocal()
-        gradlePluginPortal()
-    }
-
     jacoco {
         toolVersion = '0.8.9'
     }
@@ -84,10 +74,10 @@ allprojects {
     }
 
     dependencies {
-        implementation jsr305
-        testImplementation(platform(test))
-        testImplementation testJupiter
-        testImplementation assertj
+        implementation libs.findbugs.jsr305
+        testImplementation(platform(libs.junit))
+        testImplementation libs.junit.jupiter
+        testImplementation libs.assertj
     }
 
     test {
