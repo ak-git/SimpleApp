@@ -11,6 +11,7 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven { url = 'https://maven.sing-group.org/repository/maven/' }
         maven { url 'https://jitpack.io' }
     }
 

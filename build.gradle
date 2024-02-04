@@ -75,8 +75,8 @@ allprojects {
 
     dependencies {
         implementation libs.findbugs.jsr305
-        implementation 'jfugue:jfugue:5.0.9'
-        implementation 'org.apache.commons:commons-math3:3.6.1'
+        implementation libs.jfugue
+        implementation libs.commons.math3
         testImplementation(platform(libs.junit))
         testImplementation libs.bundles.test
     }
