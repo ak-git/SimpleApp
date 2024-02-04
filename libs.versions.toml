@@ -21,5 +21,7 @@ findbugs-jsr305 = { module = 'com.google.code.findbugs:jsr305', version.ref = 'j
 
 junit = { module = 'org.junit:junit-bom', version.ref = 'junit' }
 junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit' }
-
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
+
+[bundles]
+test = ['junit-jupiter', 'assertj']

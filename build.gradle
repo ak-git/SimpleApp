@@ -76,8 +76,7 @@ allprojects {
     dependencies {
         implementation libs.findbugs.jsr305
         testImplementation(platform(libs.junit))
-        testImplementation libs.junit.jupiter
-        testImplementation libs.assertj
+        testImplementation libs.bundles.test
     }
 
     test {
