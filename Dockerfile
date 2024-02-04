@@ -1,4 +1,4 @@
-FROM openjdk:20
+FROM openjdk:21
 
 # Create a new app directory for my application files
 RUN mkdir /app

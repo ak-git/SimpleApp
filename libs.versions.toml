@@ -1,0 +1,27 @@
+[versions]
+javamodularity-moduleplugin = '1.8.12'
+sonarqube = '4.4.1.3373'
+spotbugs = '6.0.7'
+ben-manes-versions = '0.51.0'
+nebula-lint = '19.0.1'
+
+jsr305 = '3.0.2'
+junit = '5.10.1'
+assertj = '3.25.2'
+
+[plugins]
+javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
+sonarqube = { id = 'org.sonarqube', version.ref = 'sonarqube' }
+spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
+ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
+nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }
+
+[libraries]
+findbugs-jsr305 = { module = 'com.google.code.findbugs:jsr305', version.ref = 'jsr305' }
+
+junit = { module = 'org.junit:junit-bom', version.ref = 'junit' }
+junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit' }
+assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
+
+[bundles]
+test = ['junit-jupiter', 'assertj']
