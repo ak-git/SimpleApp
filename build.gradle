@@ -40,7 +40,7 @@ ext {
 wrapper {
     description 'Setup the Gradle wrapper'
     gradleVersion = '8.6'
-    distributionUrl = 'https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 allprojects {
