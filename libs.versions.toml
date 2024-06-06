@@ -1,13 +1,13 @@
 [versions]
 javamodularity-moduleplugin = '1.8.15'
 sonarqube = '5.0.0.4638'
-spotbugs = '6.0.12'
+spotbugs = '6.0.15'
 ben-manes-versions = '0.51.0'
 nebula-lint = '19.0.2'
 
 jsr305 = '3.0.2'
-junit = '5.11.0-M1'
-assertj = '3.25.3'
+junit = '5.11.0-M2'
+assertj = '3.26.0'
 
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
