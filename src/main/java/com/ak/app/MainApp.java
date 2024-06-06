@@ -7,6 +7,6 @@ public class MainApp {
   }
 
   public static void main(String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.04.28!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.06.06!");
   }
 }
