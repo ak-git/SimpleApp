@@ -4,9 +4,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'jacoco'
-    id 'application'
     alias(libs.plugins.javamodularity.moduleplugin) apply false
-    alias(libs.plugins.sonarqube)
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.nebula.lint)
@@ -20,16 +18,6 @@ tasks.spotbugsMain {
     reports.create('html') {
         required = true
         setStylesheet('fancy-hist.xsl')
-    }
-}
-
-sonar {
-    properties {
-        property 'sonar.projectKey', 'ak-git_SimpleApp'
-        property 'sonar.organization', 'ak-git'
-        property 'sonar.host.url', 'https://sonarcloud.io'
-        property 'sonar.branch.name', 'master'
-        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
     }
 }
 
@@ -81,9 +69,4 @@ allprojects {
         }
         maxHeapSize = '1G'
     }
-}
-
-application {
-    mainModule = 'com.ak.app'
-    mainClass = 'com.ak.app.MainApp'
 }
