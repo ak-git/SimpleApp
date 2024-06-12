@@ -37,15 +37,9 @@ ext {
     javaVersion = JavaVersion.VERSION_21
 }
 
-wrapper {
-    description 'Setup the Gradle wrapper'
-    gradleVersion = '8.8'
-    distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
-}
-
 allprojects {
     group = 'com.ak'
-    version = '2024.06.06'
+    version = '2024.06.12'
     apply plugin: 'idea'
     idea {
         module {
