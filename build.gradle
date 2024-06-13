@@ -57,8 +57,6 @@ allprojects {
 
     dependencies {
         implementation libs.findbugs.jsr305
-        implementation libs.jfugue
-        implementation libs.commons.math3
         testImplementation(platform(libs.junit))
         testImplementation libs.bundles.test
     }
