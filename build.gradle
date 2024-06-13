@@ -4,9 +4,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'jacoco'
-    id 'application'
     alias(libs.plugins.javamodularity.moduleplugin) apply false
-    alias(libs.plugins.sonarqube)
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.nebula.lint)
@@ -23,29 +21,13 @@ tasks.spotbugsMain {
     }
 }
 
-sonar {
-    properties {
-        property 'sonar.projectKey', 'ak-git_SimpleApp'
-        property 'sonar.organization', 'ak-git'
-        property 'sonar.host.url', 'https://sonarcloud.io'
-        property 'sonar.branch.name', 'master'
-        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
-    }
-}
-
 ext {
     javaVersion = JavaVersion.VERSION_21
 }
 
-wrapper {
-    description 'Setup the Gradle wrapper'
-    gradleVersion = '8.8'
-    distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
-}
-
 allprojects {
     group = 'com.ak'
-    version = '2024.06.06'
+    version = '2024.06.12'
     apply plugin: 'idea'
     idea {
         module {
@@ -87,9 +69,4 @@ allprojects {
         }
         maxHeapSize = '1G'
     }
-}
-
-application {
-    mainModule = 'com.ak.app'
-    mainClass = 'com.ak.app.MainApp'
 }
