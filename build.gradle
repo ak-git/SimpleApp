@@ -53,6 +53,7 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'jacoco'
+    apply plugin: 'org.barfuin.gradle.jacocolog'
 
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion

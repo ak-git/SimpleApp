@@ -34,7 +34,7 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: gradle clean build test jacocoAggregatedReport sonar --info
+        run: gradle build jacocoAggregatedReport sonar --info
       - name: Login to Docker Hub
         run: docker login -u a002k -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and tag the Docker image
