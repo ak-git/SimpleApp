@@ -13,6 +13,10 @@ sonar {
     }
 }
 
+dependencies {
+    implementation project(":base")
+}
+
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
