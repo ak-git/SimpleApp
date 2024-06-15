@@ -23,6 +23,16 @@ tasks.spotbugsMain {
     }
 }
 
+sonar {
+    properties {
+        property 'sonar.projectKey', 'ak-git_SimpleApp'
+        property 'sonar.organization', 'ak-git'
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.branch.name', 'master'
+        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/jacocoAggregatedReport/jacocoAggregatedReport.xml'
+    }
+}
+
 ext {
     javaVersion = JavaVersion.VERSION_21
 }
@@ -54,16 +64,6 @@ allprojects {
     jacocoTestReport {
         reports {
             xml.required = true
-        }
-    }
-
-    sonar {
-        properties {
-            property 'sonar.projectKey', 'ak-git_SimpleApp'
-            property 'sonar.organization', 'ak-git'
-            property 'sonar.host.url', 'https://sonarcloud.io'
-            property 'sonar.branch.name', 'master'
-            property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/jacocoAggregatedReport/jacocoAggregatedReport.xml'
         }
     }
 
