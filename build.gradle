@@ -41,15 +41,6 @@ allprojects {
     group = 'com.ak'
     version = '2024.06.15'
     apply plugin: 'idea'
-    idea {
-        module {
-            inheritOutputDirs = true
-        }
-    }
-    sourceSets {
-        main.output.resourcesDir = main.java.classesDirectory
-    }
-
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'jacoco'
