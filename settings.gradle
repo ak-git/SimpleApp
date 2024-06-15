@@ -23,4 +23,3 @@ dependencyResolutionManagement {
 
 rootProject.name = 'SimpleApp'
 include 'hello'
-include 'base'

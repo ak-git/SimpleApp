@@ -2,10 +2,6 @@ plugins {
     id 'application'
 }
 
-dependencies {
-    api project(":base")
-}
-
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'

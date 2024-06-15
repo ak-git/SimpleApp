@@ -1,7 +1,5 @@
 package com.ak.app;
 
-import com.ak.base.BaseUtils;
-
 import java.util.logging.Logger;
 
 public class MainApp {
@@ -9,6 +7,6 @@ public class MainApp {
   }
 
   public static void main(String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> BaseUtils.calc("Hello word 2024.06.15!"));
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.06.15!");
   }
 }
