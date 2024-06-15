@@ -1,7 +1,8 @@
 [versions]
 javamodularity-moduleplugin = '1.8.15'
 sonarqube = '5.0.0.4638'
-spotbugs = '6.0.16'
+jacocolog = '3.1.0'
+spotbugs = '6.0.17'
 ben-manes-versions = '0.51.0'
 nebula-lint = '19.0.2'
 
@@ -12,6 +13,7 @@ assertj = '3.26.0'
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
 sonarqube = { id = 'org.sonarqube', version.ref = 'sonarqube' }
+jacocolog = { id = 'org.barfuin.gradle.jacocolog', version.ref = 'jacocolog' }
 spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
 ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
 nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }

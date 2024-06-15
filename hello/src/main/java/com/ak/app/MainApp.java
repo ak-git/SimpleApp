@@ -9,6 +9,6 @@ public class MainApp {
   }
 
   public static void main(String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> BaseUtils.calc("Hello word 2024.06.12!"));
+    Logger.getLogger(MainApp.class.getName()).info(() -> BaseUtils.calc("Hello word 2024.06.15!"));
   }
 }
