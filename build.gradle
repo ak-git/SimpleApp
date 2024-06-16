@@ -46,8 +46,10 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
 
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
+    java {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
 
     jacoco {
         toolVersion = '0.8.12'
