@@ -18,7 +18,7 @@ public class MainApp {
   }
 
   public static void main(String[] args) throws IOException {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.06.12!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.06.24!");
 
     final double MAX_IAP = 166.0;
     final int TEMPO_BPM = 1200;
