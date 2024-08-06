@@ -22,11 +22,10 @@ public class MainApp {
 
     final int TEMPO_BPM = 1200;
 
-    String name = "Kotov";
-    int iap = 150;
-    int minutes = 38;
-    double[] dIn = Arrays.copyOf(new double[] {80, 90, 100, 135, 135, 135, 120, 115, 115, 140, 140, 140, 125, 120, 120, 145, 145, 145, 130, 125, 125, 150,
-        150, 150, 135, 130, 130, 155, 155, 155, 140, 135, 135, 160, 160, 160, 120, 100}, minutes);
+    String name = "Bestuzhev";
+    int iap = 161;
+    int minutes = 62;
+    double[] dIn = Arrays.copyOf(Training.T_17.doubles(), minutes);
 
     double[] d = new double[dIn.length + 1];
     System.arraycopy(dIn, 0, d, 0, dIn.length);
@@ -59,7 +58,7 @@ public class MainApp {
     }
 
     Logger.getLogger(MainApp.class.getName()).info(() -> "");
-    MidiFileManager.savePatternToMidi(pattern, new File("%s_%02d.midi".formatted(name, 1)));
+    MidiFileManager.savePatternToMidi(pattern, new File("%s-%02d.midi".formatted(name, 2)));
     player.play(pattern);
   }
 }

@@ -4,6 +4,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'jacoco'
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.javamodularity.moduleplugin) apply false
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
