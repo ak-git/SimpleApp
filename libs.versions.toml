@@ -5,9 +5,10 @@ jacocolog = '3.1.0'
 spotbugs = '6.0.19'
 ben-manes-versions = '0.51.0'
 nebula-lint = '19.0.3'
+dependency-analysis = '1.33.0'
 
 jsr305 = '3.0.2'
-junit = '5.11.0-M2'
+junit = '5.11.0-RC1'
 assertj = '3.26.3'
 
 [plugins]
@@ -17,6 +18,7 @@ jacocolog = { id = 'org.barfuin.gradle.jacocolog', version.ref = 'jacocolog' }
 spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
 ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
 nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }
+dependency-analysis = { id = 'com.autonomousapps.dependency-analysis', version.ref = 'dependency-analysis' }
 
 [libraries]
 findbugs-jsr305 = { module = 'com.google.code.findbugs:jsr305', version.ref = 'jsr305' }
