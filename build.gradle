@@ -4,6 +4,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'jacoco'
+    alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.javamodularity.moduleplugin) apply false
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
@@ -39,7 +40,7 @@ ext {
 
 allprojects {
     group = 'com.ak'
-    version = '2024.06.24'
+    version = '2024.08.06'
     apply plugin: 'idea'
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
@@ -59,12 +60,6 @@ allprojects {
         reports {
             xml.required = true
         }
-    }
-
-    dependencies {
-        implementation libs.findbugs.jsr305
-        testImplementation(platform(libs.junit))
-        testImplementation libs.bundles.test
     }
 
     test {

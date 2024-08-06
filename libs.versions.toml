@@ -1,14 +1,15 @@
 [versions]
 javamodularity-moduleplugin = '1.8.15'
-sonarqube = '5.0.0.4638'
+sonarqube = '5.1.0.4882'
 jacocolog = '3.1.0'
-spotbugs = '6.0.17'
+spotbugs = '6.0.19'
 ben-manes-versions = '0.51.0'
-nebula-lint = '19.0.2'
+nebula-lint = '19.0.3'
+dependency-analysis = '1.33.0'
 
 jsr305 = '3.0.2'
-junit = '5.11.0-M2'
-assertj = '3.26.0'
+junit = '5.11.0-RC1'
+assertj = '3.26.3'
 
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
@@ -17,13 +18,15 @@ jacocolog = { id = 'org.barfuin.gradle.jacocolog', version.ref = 'jacocolog' }
 spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
 ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
 nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }
+dependency-analysis = { id = 'com.autonomousapps.dependency-analysis', version.ref = 'dependency-analysis' }
 
 [libraries]
 findbugs-jsr305 = { module = 'com.google.code.findbugs:jsr305', version.ref = 'jsr305' }
 
 junit = { module = 'org.junit:junit-bom', version.ref = 'junit' }
 junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit' }
+junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit' }
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
 
 [bundles]
-test = ['junit-jupiter', 'assertj']
+test = ['junit-jupiter', 'junit-jupiter-api', 'assertj']

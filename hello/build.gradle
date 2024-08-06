@@ -2,6 +2,12 @@ plugins {
     id 'application'
 }
 
+dependencies {
+    implementation libs.findbugs.jsr305
+    testImplementation(platform(libs.junit))
+    testImplementation libs.bundles.test
+}
+
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
