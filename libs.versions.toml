@@ -2,13 +2,13 @@
 javamodularity-moduleplugin = '1.8.15'
 sonarqube = '5.1.0.4882'
 jacocolog = '3.1.0'
-spotbugs = '6.0.19'
+spotbugs = '6.0.20'
 ben-manes-versions = '0.51.0'
 nebula-lint = '19.0.3'
 dependency-analysis = '1.33.0'
 
 jsr305 = '3.0.2'
-junit = '5.11.0-RC1'
+junit = '5.11.0'
 assertj = '3.26.3'
 
 [plugins]
