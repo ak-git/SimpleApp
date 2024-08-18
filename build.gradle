@@ -34,13 +34,9 @@ sonar {
     }
 }
 
-ext {
-    javaVersion = JavaVersion.VERSION_21
-}
-
 allprojects {
     group = 'com.ak'
-    version = '2024.07.26'
+    version = '2024.08.16'
     apply plugin: 'idea'
     apply plugin: 'java-library'
     apply plugin: 'org.javamodularity.moduleplugin'
@@ -48,8 +44,9 @@ allprojects {
     apply plugin: 'org.barfuin.gradle.jacocolog'
 
     java {
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(22)
+        }
     }
 
     jacoco {
@@ -60,12 +57,6 @@ allprojects {
         reports {
             xml.required = true
         }
-    }
-
-    dependencies {
-        implementation libs.findbugs.jsr305
-        testImplementation(platform(libs.junit))
-        testImplementation libs.bundles.test
     }
 
     test {
