@@ -6,7 +6,7 @@ dependencies {
     implementation libs.jfugue
     implementation libs.commons.math3
 
-    implementation libs.findbugs.jsr305
+    implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
 }
