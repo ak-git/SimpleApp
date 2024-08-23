@@ -1,11 +1,24 @@
 plugins {
+    alias(libs.plugins.javamodularity.moduleplugin)
     id 'application'
 }
+
+apply plugin: 'java-library'
+apply plugin: 'org.javamodularity.moduleplugin'
 
 dependencies {
     implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
 }
 
 application {

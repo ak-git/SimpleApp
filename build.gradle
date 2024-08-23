@@ -5,7 +5,6 @@ plugins {
     id 'idea'
     id 'jacoco'
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.javamodularity.moduleplugin) apply false
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.nebula.lint)
@@ -39,7 +38,6 @@ allprojects {
     version = '2024.08.23'
     apply plugin: 'idea'
     apply plugin: 'java-library'
-    apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
 
