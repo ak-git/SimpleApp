@@ -1,6 +1,6 @@
 module com.ak.app {
   requires java.logging;
-  requires jsr305;
+  requires org.jspecify;
 
   exports com.ak.app;
 }

@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation libs.findbugs.jsr305
+    implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
 }
