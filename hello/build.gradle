@@ -3,13 +3,16 @@ plugins {
     id 'application'
 }
 
-apply plugin: 'java-library'
-apply plugin: 'org.javamodularity.moduleplugin'
-
 dependencies {
     implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
 }
 
 compileJava {
