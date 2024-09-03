@@ -1,5 +1,4 @@
 # Simple Java App with Docker support
-
 ## Update dependencies
 
 ```shell
