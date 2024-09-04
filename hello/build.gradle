@@ -7,7 +7,7 @@ dependencies {
     implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
-    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+    testRuntimeOnly libs.junit.platform.launcher
 }
 
 application {
