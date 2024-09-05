@@ -4,8 +4,6 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'jacoco'
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.javamodularity.moduleplugin) apply false
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.nebula.lint)
@@ -36,18 +34,10 @@ sonar {
 
 allprojects {
     group = 'com.ak'
-    version = '2024.08.23'
+    version = '2024.09.04'
     apply plugin: 'idea'
-    apply plugin: 'java-library'
-    apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
-
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(22)
-        }
-    }
 
     jacoco {
         toolVersion = '0.8.12'
@@ -57,6 +47,25 @@ allprojects {
         reports {
             xml.required = true
         }
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(22)
+        }
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.compilerArgs << '-parameters'
+    }
+
+    compileTestJava {
+        options.encoding = 'UTF-8'
     }
 
     test {

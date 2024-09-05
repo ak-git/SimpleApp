@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.javamodularity.moduleplugin)
     id 'application'
 }
 
@@ -9,6 +10,7 @@ dependencies {
     implementation libs.jspecify
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test
+    testRuntimeOnly libs.junit.platform.launcher
 }
 
 application {
