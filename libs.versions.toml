@@ -22,10 +22,13 @@ nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }
 jspecify = { module = 'org.jspecify:jspecify', version.ref = 'jspecify' }
 
 junit = { module = 'org.junit:junit-bom', version.ref = 'junit' }
-junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit' }
-junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit' }
+junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter' }
+junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api' }
+junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine' }
 junit-platform-launcher = { module = 'org.junit.platform:junit-platform-launcher' }
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
 
 [bundles]
-test = ['junit-jupiter', 'junit-jupiter-api', 'assertj']
+test-implementation = ['junit-jupiter-api', 'assertj']
+test-compile = ['junit-jupiter', 'junit-jupiter-engine']
+test-runtime = ['junit-jupiter-engine', 'junit-platform-launcher']

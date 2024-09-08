@@ -34,7 +34,7 @@ sonar {
 
 allprojects {
     group = 'com.ak'
-    version = '2024.09.04'
+    version = '2024.09.08'
     apply plugin: 'idea'
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
