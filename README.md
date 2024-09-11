@@ -1,4 +1,4 @@
-# Simple "Hello World" Java App with Docker support
+# Simple Java "Hello World" Application with Gradle and Docker support
 
 ## Update dependencies
 
