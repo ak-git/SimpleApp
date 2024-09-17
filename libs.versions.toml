@@ -2,9 +2,10 @@
 javamodularity-moduleplugin = '1.8.15'
 sonarqube = '5.1.0.4882'
 jacocolog = '3.1.0'
-spotbugs = '6.0.21'
+spotbugs = '6.0.22'
 ben-manes-versions = '0.51.0'
 nebula-lint = '19.0.3'
+jgitver = '0.10.0-rc03'
 
 jspecify = '1.0.0'
 junit = '5.11.0'
@@ -20,13 +21,15 @@ jacocolog = { id = 'org.barfuin.gradle.jacocolog', version.ref = 'jacocolog' }
 spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
 ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
 nebula-lint = { id = 'nebula.lint', version.ref = 'nebula-lint' }
+jgitver = { id = 'fr.brouillard.oss.gradle.jgitver', version.ref = 'jgitver' }
 
 [libraries]
 jspecify = { module = 'org.jspecify:jspecify', version.ref = 'jspecify' }
 
 junit = { module = 'org.junit:junit-bom', version.ref = 'junit' }
-junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit' }
-junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit' }
+junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter' }
+junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api' }
+junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine' }
 junit-platform-launcher = { module = 'org.junit.platform:junit-platform-launcher' }
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
 
@@ -34,4 +37,6 @@ jfugue = { module = 'jfugue:jfugue', version.ref = 'jfugue' }
 commons-math3 = { module = 'org.apache.commons:commons-math3', version.ref = 'commons-math3' }
 
 [bundles]
-test = ['junit-jupiter', 'junit-jupiter-api', 'assertj']
+test-implementation = ['junit-jupiter-api', 'assertj']
+test-compile = ['junit-jupiter', 'junit-jupiter-engine']
+test-runtime = ['junit-jupiter-engine', 'junit-platform-launcher']

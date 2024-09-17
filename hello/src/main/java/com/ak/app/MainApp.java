@@ -18,7 +18,7 @@ public class MainApp {
   }
 
   public static void main(String[] args) throws IOException {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.09.04!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.6.7-27!");
 
     final int TEMPO_BPM = 1200;
 
