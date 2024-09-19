@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.nebula.lint)
     alias(libs.plugins.sonarqube)
     alias(libs.plugins.jacocolog)
-    alias(libs.plugins.jgitver)
 }
 
 spotbugs {

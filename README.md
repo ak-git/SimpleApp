@@ -16,14 +16,6 @@
 ./gradlew buildHealth
 ```
 
-## Update project version
-
-### Plugin [gradle-jgitver-plugin](https://github.com/jgitver/gradle-jgitver-plugin)
-
-```shell
-./gradlew version
-```
-
 ## Build docker image
 
 ```shell
