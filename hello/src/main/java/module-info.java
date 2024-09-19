@@ -3,4 +3,5 @@ module com.ak.app {
   requires org.jspecify;
 
   exports com.ak.app;
+  exports com.ak.m0;
 }
