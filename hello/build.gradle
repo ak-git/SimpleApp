@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation libs.jspecify
+    implementation libs.gson
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test.implementation
     testCompileOnly libs.bundles.test.compile
