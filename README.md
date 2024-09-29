@@ -47,6 +47,7 @@ docker compose logs
 ```
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f7e44f2278c24e49927d582424b0e2a4)](https://app.codacy.com/gh/ak-git/SimpleApp?utm_source=github.com&utm_medium=referral&utm_content=ak-git/SimpleApp&utm_campaign=Badge_Grade_Settings)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
