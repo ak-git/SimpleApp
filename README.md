@@ -1,5 +1,11 @@
 # Simple Java "Hello World" Application with Gradle and Docker support
 
+## Run using Gradle
+
+```shell
+./gradlew run -t
+```
+
 ## Update dependencies
 
 ### Plugin [com.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)

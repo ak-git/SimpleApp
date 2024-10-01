@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DOCKER_USER: a002k
+  DOCKER_IMAGE: simple-app
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,7 +24,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10.1'
+          gradle-version: '8.10.2'
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
@@ -38,9 +42,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: gradle build jacocoAggregatedReport sonar --info
       - name: Login to Docker Hub
-        run: docker login -u a002k -p ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and tag the Docker image
         run: |
-          docker build -t a002k/simple-app:latest .
+          docker build -t ${{ DOCKER_USER }}/${{ DOCKER_IMAGE }}:latest .
       - name: Push the Docker image
-        run: docker push a002k/simple-app --all-tags
+        run: docker push ${{ DOCKER_USER }}/${{ DOCKER_IMAGE }} --all-tags

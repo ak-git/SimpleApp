@@ -24,8 +24,8 @@ tasks.spotbugsMain {
 
 sonar {
     properties {
-        property 'sonar.projectKey', 'ak-git_SimpleApp'
-        property 'sonar.organization', 'ak-git'
+        property 'sonar.projectKey', property('sonar.projectKey')
+        property 'sonar.organization', property('sonar.organization')
         property 'sonar.host.url', 'https://sonarcloud.io'
         property 'sonar.branch.name', 'master'
         property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/jacocoAggregatedReport/jacocoAggregatedReport.xml'
