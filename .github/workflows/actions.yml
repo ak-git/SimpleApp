@@ -41,11 +41,15 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: gradle build jacocoAggregatedReport sonar --info
+
       - name: Compute version
         id: compute_version
-        run: |
-          echo "::set-output name=version::$(./gradlew version | grep Version | awk '{ print $2 }')"
-          echo "${{ steps.compute_version.outputs.version }}"
+        run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> GITHUB_OUTPUT
+      - name: Get version
+        env:
+          SELECTED_VERSION: ${{ steps.compute_version.outputs.BUILD_VERSION }}
+        run: echo "The selected color is $SELECTED_VERSION"
+
       - name: Login to Docker Hub
         run: docker login -u $DOCKER_USER -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and tag the Docker image
