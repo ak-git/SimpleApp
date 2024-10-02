@@ -44,7 +44,7 @@ jobs:
 
       - name: Compute version
         id: compute_version
-        run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> GITHUB_OUTPUT
+        run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> $GITHUB_OUTPUT
       - name: Get version
         env:
           SELECTED_VERSION: ${{ steps.compute_version.outputs.BUILD_VERSION }}
