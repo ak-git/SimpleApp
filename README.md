@@ -6,6 +6,24 @@
 ./gradlew run -t
 ```
 
+## [Semantic versioning](https://zoltanaltfatter.com/2020/04/10/semantic-versioning-with-jgitver/)
+
+### Plugin [fr.brouillard.oss.gradle.jgitver](https://github.com/jgitver/gradle-jgitver-plugin)
+
+```shell
+./gradlew version
+```
+
+```shell
+./gradlew version | grep Version | awk '{ print $2 }'
+```
+
+### Update version and add git tag
+
+```shell
+git tag 2024.11.1
+```
+
 ## Update dependencies
 
 ### Plugin [com.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)
