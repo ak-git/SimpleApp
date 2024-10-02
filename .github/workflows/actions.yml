@@ -41,9 +41,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: gradle build jacocoAggregatedReport sonar --info
-
       - name: Compute version
-        id: compute_version
         run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> $GITHUB_ENV
       - name: Login to Docker Hub
         run: docker login -u $DOCKER_USER -p ${{ secrets.DOCKER_PASSWORD }}
