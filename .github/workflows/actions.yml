@@ -44,16 +44,10 @@ jobs:
 
       - name: Compute version
         id: compute_version
-        run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> $GITHUB_OUTPUT
-      - name: Get version
-        env:
-          SELECTED_VERSION: ${{ steps.compute_version.outputs.BUILD_VERSION }}
-        run: echo "The selected color is $SELECTED_VERSION"
-
+        run: echo "BUILD_VERSION=$(gradle version | grep Version | awk '{ print $2 }')" >> $GITHUB_ENV
       - name: Login to Docker Hub
         run: docker login -u $DOCKER_USER -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and tag the Docker image
-        run: |
-          docker build -t $DOCKER_USER/$DOCKER_IMAGE:latest .
+        run: docker build -t $DOCKER_USER/$DOCKER_IMAGE:${{ env.BUILD_VERSION }} -t $DOCKER_USER/$DOCKER_IMAGE:latest .
       - name: Push the Docker image
         run: docker push $DOCKER_USER/$DOCKER_IMAGE --all-tags
