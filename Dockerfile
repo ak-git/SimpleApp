@@ -9,7 +9,7 @@ RUN groupadd -g 1234 customgroup && \
 USER customuser
 
 # Copy the app files from host machine to image filesystem
-COPY hello/build/classes/java/main /home/customuser
+COPY --link hello/build/classes/java/main /home/customuser
 
 # Set the directory for executing future commands
 WORKDIR /home/customuser
