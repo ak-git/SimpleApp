@@ -40,12 +40,6 @@ git tag 2024.11.1
 ./gradlew buildHealth
 ```
 
-## Build docker image
-
-```shell
-docker build -t a002k/simple-app:latest .
-```
-
 ## Run docker image
 
 ```shell
@@ -56,18 +50,6 @@ docker run --rm a002k/simple-app
 
 ```shell
 docker compose run --rm simple-app
-```
-
-or
-
-```shell
-docker compose up -d
-```
-
-and show logs
-
-```shell
-docker compose logs
 ```
 
 [![Github Action Badge](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)
