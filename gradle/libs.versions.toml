@@ -8,11 +8,8 @@ nebula-lint = '20.0.0'
 jgitver = '0.10.0-rc03'
 
 jspecify = '1.0.0'
-junit = '5.11.1'
+junit = '5.11.2'
 assertj = '3.26.3'
-mockito = '5.13.0'
-
-gson = "2.10.1"
 
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
@@ -32,12 +29,8 @@ junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api' }
 junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine' }
 junit-platform-launcher = { module = 'org.junit.platform:junit-platform-launcher' }
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
-mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
-
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 [bundles]
-test-implementation = ['junit-jupiter-api', 'assertj', 'mockito-core', 'mockito-junit']
+test-implementation = ['junit-jupiter-api', 'assertj']
 test-compile = ['junit-jupiter', 'junit-jupiter-engine']
 test-runtime = ['junit-jupiter-engine', 'junit-platform-launcher']
