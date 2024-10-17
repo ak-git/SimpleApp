@@ -1,5 +1,6 @@
 package com.ak.app;
 
+import java.time.ZonedDateTime;
 import java.util.logging.Logger;
 
 public class MainApp {
@@ -7,6 +8,6 @@ public class MainApp {
   }
 
   public static void main(String[] args) {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.6.7-27!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word! %s".formatted(ZonedDateTime.now()));
   }
 }
