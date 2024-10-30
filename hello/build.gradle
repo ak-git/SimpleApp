@@ -12,6 +12,8 @@ dependencies {
     testRuntimeOnly libs.bundles.test.runtime
 }
 
+apply plugin: 'java-library'
+
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
