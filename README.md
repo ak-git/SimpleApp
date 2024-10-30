@@ -46,10 +46,42 @@ git tag 2024.11.1
 docker run --rm a002k/simple-app
 ```
 
+```shell
+docker run -d --name simple-app --rm a002k/simple-app
+```
+
+- ```-i``` Keep STDIN open even if not attached
+- ```--rm``` Remove container after stop
+- ```-d``` Detach mode, Run container in background and print container ID
+
+and follow ```-f``` logs
+
+```shell
+docker logs -f simple-app
+```
+
+to stop
+
+```shell
+docker stop simple-app
+```
+
 ## Run docker image as docker-compose
 
 ```shell
-docker compose run --rm simple-app
+docker compose run -d --name simple-app --rm simple-app
+```
+
+and follow ```-f``` logs
+
+```shell
+docker compose logs -f simple-app
+```
+
+to stop
+
+```shell
+docker compose down
 ```
 
 [![Github Action Badge](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)
