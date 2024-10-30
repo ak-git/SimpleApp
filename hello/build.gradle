@@ -1,5 +1,4 @@
 plugins {
-    id 'java-library'
     id 'application'
     alias(libs.plugins.javamodularity.moduleplugin)
 }
@@ -11,8 +10,6 @@ dependencies {
     testCompileOnly libs.bundles.test.compile
     testRuntimeOnly libs.bundles.test.runtime
 }
-
-apply plugin: 'java-library'
 
 application {
     mainModule = 'com.ak.app'
