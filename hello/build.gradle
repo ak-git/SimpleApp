@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.javamodularity.moduleplugin)
+    id 'java-library'
     id 'application'
+    alias(libs.plugins.javamodularity.moduleplugin)
 }
 
 dependencies {
