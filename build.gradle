@@ -39,6 +39,13 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
 
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
     jacoco {
         toolVersion = '0.8.12'
     }
@@ -52,6 +59,12 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
+
+    configurations {
+        compileClasspath {
+            resolutionStrategy.failOnVersionConflict()
+        }
+    }
 
     java {
         toolchain {
