@@ -9,6 +9,7 @@ import org.jfugue.rhythm.Rhythm;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
@@ -18,7 +19,7 @@ public class MainApp {
   }
 
   public static void main(String[] args) throws IOException {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word 2024.6.7-27!");
+    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word! %s".formatted(ZonedDateTime.now()));
 
     final int TEMPO_BPM = 1200;
 

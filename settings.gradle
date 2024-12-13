@@ -2,27 +2,19 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-        mavenLocal()
         maven { url 'https://jitpack.io' }
     }
 }
 
 plugins {
-    id('com.autonomousapps.build-health') version '2.0.2'
+    id('com.autonomousapps.build-health') version '2.6.0'
 }
 
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        mavenLocal()
         maven { url = 'https://maven.sing-group.org/repository/maven/' }
         maven { url 'https://jitpack.io' }
-    }
-
-    versionCatalogs {
-        libs {
-            from(files('libs.versions.toml'))
-        }
     }
 }
 
