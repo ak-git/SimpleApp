@@ -60,6 +60,12 @@ allprojects {
 subprojects {
     apply plugin: 'java'
 
+    configurations {
+        compileClasspath {
+            resolutionStrategy.failOnVersionConflict()
+        }
+    }
+
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(23)
