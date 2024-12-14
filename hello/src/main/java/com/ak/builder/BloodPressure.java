@@ -1,5 +1,7 @@
 package com.ak.builder;
 
+import java.util.function.IntUnaryOperator;
+
 public sealed interface BloodPressure permits BloodPressureRecord {
   int systolic();
 
@@ -45,10 +47,11 @@ public sealed interface BloodPressure permits BloodPressureRecord {
 
 record BloodPressureRecord(int systolic, int diastolic) implements BloodPressure {
   BloodPressureRecord(int systolic, int diastolic) {
-    int s = Math.clamp(systolic, 50, 220);
-    int d = Math.clamp(diastolic, 10, 130);
-    this.systolic = Math.max(s, d);
-    this.diastolic = Math.min(s, d);
+    IntUnaryOperator pressureLimits = bp -> Math.clamp(bp, 10, 220);
+    int s = pressureLimits.applyAsInt(systolic);
+    int d = pressureLimits.applyAsInt(diastolic);
+    this.systolic = Math.clamp(Math.max(s, d), 50, 220);
+    this.diastolic = Math.clamp(Math.min(s, d), 10, 130);
   }
 }
 

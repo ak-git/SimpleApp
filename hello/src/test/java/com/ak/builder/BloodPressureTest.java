@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BloodPressureTest {
   @ParameterizedTest
-  @CsvSource(value = {"120; 80", "70; 110"}, delimiter = ';')
+  @CsvSource(value = {"120; 80", "70; 110", "10; 220"}, delimiter = ';')
   void build(int systolic, int diastolic) {
     BloodPressure bloodPressure = BloodPressure.builder().systolic(systolic).diastolic(diastolic).build();
     assertAll(bloodPressure.toString(),
