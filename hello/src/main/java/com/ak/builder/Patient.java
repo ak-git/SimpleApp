@@ -9,6 +9,8 @@ public sealed interface Patient permits PatientRecord {
 
   BloodPressure bloodPressure();
 
+  Rates rates();
+
   static Step1 builder() {
     return new PatientRecord.PatientBuilder();
   }
@@ -22,13 +24,18 @@ public sealed interface Patient permits PatientRecord {
   }
 
   sealed interface Step3 permits PatientBuilder {
-    Builder<Patient> bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction);
+    Step4 bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction);
   }
 
-  final class PatientBuilder implements Step1, Step2, Step3, Builder<Patient> {
+  sealed interface Step4 permits PatientBuilder {
+    Builder<Patient> rates(Function<Rates.Step1, Builder<Rates>> builderFunction);
+  }
+
+  final class PatientBuilder implements Step1, Step2, Step3, Step4, Builder<Patient> {
     private int age;
     private Anthropomorphic anthropomorphic;
     private BloodPressure bloodPressure;
+    private Rates rates;
 
     private PatientBuilder() {
     }
@@ -46,23 +53,31 @@ public sealed interface Patient permits PatientRecord {
     }
 
     @Override
-    public Builder<Patient> bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction) {
+    public Step4 bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction) {
       bloodPressure = builderFunction.apply(BloodPressure.builder()).build();
       return this;
     }
 
     @Override
+    public Builder<Patient> rates(Function<Rates.Step1, Builder<Rates>> builderFunction) {
+      rates = builderFunction.apply(Rates.builder()).build();
+      return this;
+    }
+
+    @Override
     public Patient build() {
-      return new PatientRecord(age, anthropomorphic, bloodPressure);
+      return new PatientRecord(age, anthropomorphic, bloodPressure, rates);
     }
   }
 }
 
-record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure) implements Patient {
-  PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure) {
+record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure,
+                     Rates rates) implements Patient {
+  PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure, Rates rates) {
     this.age = Math.clamp(age, 12, 100);
     this.anthropomorphic = anthropomorphic;
     this.bloodPressure = bloodPressure;
+    this.rates = rates;
   }
 }
 

@@ -19,6 +19,9 @@ public class MainApp {
         .bloodPressure(b ->
             b.systolic(120).diastolic(80)
         )
+        .rates(r ->
+            r.heart(68).respiratory(22)
+        )
         .build();
     LOGGER.info(patient::toString);
   }
