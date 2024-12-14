@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class PatientTest {
   @ParameterizedTest
-  @CsvSource(value = {"18; 184; 62; 80; 120"}, delimiter = ';')
+  @CsvSource(value = {"18; 184; 62; 120; 80"}, delimiter = ';')
   void build(int age, int height, int weight, int systolic, int diastolic) {
     Patient patient = Patient.builder().age(age)
         .anthropomorphic(a -> a.height(height).weight(weight))
@@ -18,8 +18,8 @@ class PatientTest {
         () -> assertThat(patient.age()).isEqualTo(age),
         () -> assertThat(patient.anthropomorphic().height()).isEqualTo(height),
         () -> assertThat(patient.anthropomorphic().weight()).isEqualTo(weight),
-        () -> assertThat(patient.bloodPressure().systolic()).isEqualTo(Math.max(systolic, diastolic)),
-        () -> assertThat(patient.bloodPressure().diastolic()).isEqualTo(Math.min(systolic, diastolic))
+        () -> assertThat(patient.bloodPressure().systolic()).isEqualTo(systolic),
+        () -> assertThat(patient.bloodPressure().diastolic()).isEqualTo(diastolic)
     );
   }
 

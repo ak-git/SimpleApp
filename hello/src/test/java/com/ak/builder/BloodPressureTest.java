@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BloodPressureTest {
   @ParameterizedTest
-  @CsvSource(value = {"184; 62"}, delimiter = ';')
+  @CsvSource(value = {"120; 80", "70; 110"}, delimiter = ';')
   void build(int systolic, int diastolic) {
     BloodPressure bloodPressure = BloodPressure.builder().systolic(systolic).diastolic(diastolic).build();
     assertAll(bloodPressure.toString(),
-        () -> assertThat(bloodPressure.systolic()).isEqualTo(systolic),
-        () -> assertThat(bloodPressure.diastolic()).isEqualTo(diastolic)
+        () -> assertThat(bloodPressure.systolic()).isEqualTo(Math.max(systolic, diastolic)),
+        () -> assertThat(bloodPressure.diastolic()).isEqualTo(Math.min(systolic, diastolic))
     );
   }
 
