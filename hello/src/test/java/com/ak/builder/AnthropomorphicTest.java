@@ -8,14 +8,26 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class AnthropomorphicTest {
   @ParameterizedTest
-  @CsvSource(value = {"1,2", "-1,-2", "184,62"}, delimiter = ',')
+  @CsvSource(value = {"184; 62"}, delimiter = ';')
   void build(int height, int weight) {
-    Anthropomorphic.AnthropomorphicRecord.AnthropomorphicBuilder builder = Anthropomorphic.builder();
+    Anthropomorphic.AnthropomorphicBuilder builder = Anthropomorphic.builder();
     builder.height(height).weight(weight);
     Anthropomorphic anthropomorphic = builder.build();
     assertAll(anthropomorphic.toString(),
         () -> assertThat(anthropomorphic.height()).isEqualTo(height),
         () -> assertThat(anthropomorphic.weight()).isEqualTo(weight)
+    );
+  }
+
+  @ParameterizedTest
+  @CsvSource(value = {"230; 131", "-1; -2"}, delimiter = ';')
+  void buildOverhead(int height, int weight) {
+    Anthropomorphic.AnthropomorphicBuilder builder = Anthropomorphic.builder();
+    builder.height(height).weight(weight);
+    Anthropomorphic anthropomorphic = builder.build();
+    assertAll(anthropomorphic.toString(),
+        () -> assertThat(anthropomorphic.height()).isBetween(140, 220),
+        () -> assertThat(anthropomorphic.weight()).isBetween(40, 130)
     );
   }
 }
