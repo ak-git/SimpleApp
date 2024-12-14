@@ -1,5 +1,8 @@
 package com.ak.builder;
 
+import org.jspecify.annotations.Nullable;
+
+import java.util.Objects;
 import java.util.function.Function;
 
 public sealed interface Patient permits PatientRecord {
@@ -33,9 +36,9 @@ public sealed interface Patient permits PatientRecord {
 
   final class PatientBuilder implements Step1, Step2, Step3, Step4, Builder<Patient> {
     private int age;
-    private Anthropomorphic anthropomorphic;
-    private BloodPressure bloodPressure;
-    private Rates rates;
+    private @Nullable Anthropomorphic anthropomorphic;
+    private @Nullable BloodPressure bloodPressure;
+    private @Nullable Rates rates;
 
     private PatientBuilder() {
     }
@@ -66,7 +69,9 @@ public sealed interface Patient permits PatientRecord {
 
     @Override
     public Patient build() {
-      return new PatientRecord(age, anthropomorphic, bloodPressure, rates);
+      return new PatientRecord(age,
+          Objects.requireNonNull(anthropomorphic), Objects.requireNonNull(bloodPressure), Objects.requireNonNull(rates)
+      );
     }
   }
 }
