@@ -1,6 +1,6 @@
 package com.ak.builder;
 
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 public interface Patient {
   int age();
@@ -16,7 +16,7 @@ public interface Patient {
   }
 
   interface Step2 {
-    Builder<Patient> anthropomorphic(Consumer<Anthropomorphic.Step1> anthropomorphic);
+    Builder<Patient> anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction);
   }
 
   class PatientBuilder implements Step1, Step2, Builder<Patient> {
@@ -33,10 +33,8 @@ public interface Patient {
     }
 
     @Override
-    public Builder<Patient> anthropomorphic(Consumer<Anthropomorphic.Step1> step1) {
-      Anthropomorphic.AnthropomorphicBuilder builder = Anthropomorphic.builder();
-      step1.accept(builder);
-      anthropomorphic = builder.build();
+    public Builder<Patient> anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction) {
+      anthropomorphic = builderFunction.apply(Anthropomorphic.builder()).build();
       return this;
     }
 

@@ -14,7 +14,7 @@ public interface Anthropomorphic {
   }
 
   interface Step2 {
-    void weight(int weight);
+    Builder<Anthropomorphic> weight(int weight);
   }
 
   class AnthropomorphicBuilder implements Step1, Step2, Builder<Anthropomorphic> {
@@ -31,8 +31,9 @@ public interface Anthropomorphic {
     }
 
     @Override
-    public void weight(int weight) {
+    public Builder<Anthropomorphic> weight(int weight) {
       this.weight = weight;
+      return this;
     }
 
     @Override
