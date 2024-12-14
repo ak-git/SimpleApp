@@ -10,9 +10,7 @@ class AnthropomorphicTest {
   @ParameterizedTest
   @CsvSource(value = {"184; 62"}, delimiter = ';')
   void build(int height, int weight) {
-    Anthropomorphic.AnthropomorphicBuilder builder = Anthropomorphic.builder();
-    builder.height(height).weight(weight);
-    Anthropomorphic anthropomorphic = builder.build();
+    Anthropomorphic anthropomorphic = Anthropomorphic.builder().height(height).weight(weight).build();
     assertAll(anthropomorphic.toString(),
         () -> assertThat(anthropomorphic.height()).isEqualTo(height),
         () -> assertThat(anthropomorphic.weight()).isEqualTo(weight)
@@ -22,9 +20,7 @@ class AnthropomorphicTest {
   @ParameterizedTest
   @CsvSource(value = {"230; 131", "-1; -2"}, delimiter = ';')
   void buildOverhead(int height, int weight) {
-    Anthropomorphic.AnthropomorphicBuilder builder = Anthropomorphic.builder();
-    builder.height(height).weight(weight);
-    Anthropomorphic anthropomorphic = builder.build();
+    Anthropomorphic anthropomorphic = Anthropomorphic.builder().height(height).weight(weight).build();
     assertAll(anthropomorphic.toString(),
         () -> assertThat(anthropomorphic.height()).isBetween(140, 220),
         () -> assertThat(anthropomorphic.weight()).isBetween(40, 130)
