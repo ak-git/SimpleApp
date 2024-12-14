@@ -7,6 +7,8 @@ public interface Patient {
 
   Anthropomorphic anthropomorphic();
 
+  BloodPressure bloodPressure();
+
   static Step1 builder() {
     return new PatientRecord.PatientBuilder();
   }
@@ -16,12 +18,17 @@ public interface Patient {
   }
 
   interface Step2 {
-    Builder<Patient> anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction);
+    Step3 anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction);
   }
 
-  class PatientBuilder implements Step1, Step2, Builder<Patient> {
+  interface Step3 {
+    Builder<Patient> bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction);
+  }
+
+  class PatientBuilder implements Step1, Step2, Step3, Builder<Patient> {
     private int age;
     private Anthropomorphic anthropomorphic;
+    private BloodPressure bloodPressure;
 
     private PatientBuilder() {
     }
@@ -33,22 +40,29 @@ public interface Patient {
     }
 
     @Override
-    public Builder<Patient> anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction) {
+    public Step3 anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction) {
       anthropomorphic = builderFunction.apply(Anthropomorphic.builder()).build();
       return this;
     }
 
     @Override
+    public Builder<Patient> bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction) {
+      bloodPressure = builderFunction.apply(BloodPressure.builder()).build();
+      return this;
+    }
+
+    @Override
     public Patient build() {
-      return new PatientRecord(age, anthropomorphic);
+      return new PatientRecord(age, anthropomorphic, bloodPressure);
     }
   }
 }
 
-record PatientRecord(int age, Anthropomorphic anthropomorphic) implements Patient {
-  PatientRecord(int age, Anthropomorphic anthropomorphic) {
+record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure) implements Patient {
+  PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure) {
     this.age = Math.clamp(age, 12, 100);
     this.anthropomorphic = anthropomorphic;
+    this.bloodPressure = bloodPressure;
   }
 }
 

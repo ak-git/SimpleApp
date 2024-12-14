@@ -16,6 +16,9 @@ public class MainApp {
         .anthropomorphic(a ->
             a.height(184).weight(62)
         )
+        .bloodPressure(b ->
+            b.systolic(120).diastolic(80)
+        )
         .build();
     LOGGER.info(patient::toString);
   }
