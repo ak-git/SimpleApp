@@ -2,7 +2,7 @@ package com.ak.builder;
 
 import java.util.function.Function;
 
-public interface Patient {
+public sealed interface Patient permits PatientRecord {
   int age();
 
   Anthropomorphic anthropomorphic();
@@ -13,19 +13,19 @@ public interface Patient {
     return new PatientRecord.PatientBuilder();
   }
 
-  interface Step1 {
+  sealed interface Step1 permits PatientBuilder {
     Step2 age(int age);
   }
 
-  interface Step2 {
+  sealed interface Step2 permits PatientBuilder {
     Step3 anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction);
   }
 
-  interface Step3 {
+  sealed interface Step3 permits PatientBuilder {
     Builder<Patient> bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction);
   }
 
-  class PatientBuilder implements Step1, Step2, Step3, Builder<Patient> {
+  final class PatientBuilder implements Step1, Step2, Step3, Builder<Patient> {
     private int age;
     private Anthropomorphic anthropomorphic;
     private BloodPressure bloodPressure;

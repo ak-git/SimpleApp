@@ -1,6 +1,6 @@
 package com.ak.builder;
 
-public interface Anthropomorphic {
+public sealed interface Anthropomorphic permits AnthropomorphicRecord {
   int height();
 
   int weight();
@@ -9,15 +9,15 @@ public interface Anthropomorphic {
     return new AnthropomorphicRecord.AnthropomorphicBuilder();
   }
 
-  interface Step1 {
+  sealed interface Step1 permits AnthropomorphicBuilder {
     Step2 height(int height);
   }
 
-  interface Step2 {
+  sealed interface Step2 permits AnthropomorphicBuilder {
     Builder<Anthropomorphic> weight(int weight);
   }
 
-  class AnthropomorphicBuilder implements Step1, Step2, Builder<Anthropomorphic> {
+  final class AnthropomorphicBuilder implements Step1, Step2, Builder<Anthropomorphic> {
     private int height;
     private int weight;
 

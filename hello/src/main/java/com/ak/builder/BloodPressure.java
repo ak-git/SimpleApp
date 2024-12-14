@@ -1,6 +1,6 @@
 package com.ak.builder;
 
-public interface BloodPressure {
+public sealed interface BloodPressure permits BloodPressureRecord {
   int systolic();
 
   int diastolic();
@@ -9,15 +9,15 @@ public interface BloodPressure {
     return new BloodPressureBuilder();
   }
 
-  interface Step1 {
+  sealed interface Step1 permits BloodPressureBuilder {
     Step2 systolic(int systolic);
   }
 
-  interface Step2 {
+  sealed interface Step2 permits BloodPressureBuilder {
     Builder<BloodPressure> diastolic(int diastolic);
   }
 
-  class BloodPressureBuilder implements Step1, Step2, Builder<BloodPressure> {
+  final class BloodPressureBuilder implements Step1, Step2, Builder<BloodPressure> {
     private int systolic;
     private int diastolic;
 
