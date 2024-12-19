@@ -7,7 +7,7 @@ public sealed interface BloodPressure permits BloodPressureRecord {
 
   int diastolic();
 
-  static BloodPressureBuilder builder() {
+  static Step1 builder() {
     return new BloodPressureBuilder();
   }
 

@@ -5,7 +5,7 @@ public sealed interface Rates permits RatesRecord {
 
   int respiratory();
 
-  static RatesBuilder builder() {
+  static Step1 builder() {
     return new RatesBuilder();
   }
 

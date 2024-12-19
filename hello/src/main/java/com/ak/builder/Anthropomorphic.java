@@ -5,7 +5,7 @@ public sealed interface Anthropomorphic permits AnthropomorphicRecord {
 
   int weight();
 
-  static AnthropomorphicBuilder builder() {
+  static Step1 builder() {
     return new AnthropomorphicRecord.AnthropomorphicBuilder();
   }
 
