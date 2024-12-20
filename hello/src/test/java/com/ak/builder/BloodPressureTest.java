@@ -8,7 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BloodPressureTest {
   @ParameterizedTest
-  @CsvSource(value = {"120; 80", "70; 110", "10; 220"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      120 |  80
+       70 | 110
+       10 | 220
+      """)
   void build(int systolic, int diastolic) {
     BloodPressure bloodPressure = BloodPressure.builder().systolic(systolic).diastolic(diastolic).build();
     assertAll(bloodPressure.toString(),
@@ -18,7 +22,10 @@ class BloodPressureTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"230; 131", "-1; -2"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      230 | 131
+       -1 |  -2
+      """)
   void buildOverhead(int systolic, int diastolic) {
     BloodPressure bloodPressure = BloodPressure.builder().systolic(systolic).diastolic(diastolic).build();
     assertAll(bloodPressure.toString(),

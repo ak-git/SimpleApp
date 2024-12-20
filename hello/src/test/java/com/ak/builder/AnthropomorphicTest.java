@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class AnthropomorphicTest {
   @ParameterizedTest
-  @CsvSource(value = {"184; 62"}, delimiter = ';')
+  @CsvSource(value = "184 | 62", delimiter = '|')
   void build(int height, int weight) {
     Anthropomorphic anthropomorphic = Anthropomorphic.builder().height(height).weight(weight).build();
     assertAll(anthropomorphic.toString(),
@@ -18,7 +18,10 @@ class AnthropomorphicTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"230; 131", "-1; -2"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      230 | 131
+       -1 |  -2
+      """)
   void buildOverhead(int height, int weight) {
     Anthropomorphic anthropomorphic = Anthropomorphic.builder().height(height).weight(weight).build();
     assertAll(anthropomorphic.toString(),

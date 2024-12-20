@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class PatientTest {
   @ParameterizedTest
-  @CsvSource(value = {"18;   184; 62;   120; 80;   68; 22"}, delimiter = ';')
+  @CsvSource(value = "18 | 184 | 62 | 120 | 80 | 68 | 22", delimiter = '|')
   void build(int age, int height, int weight, int systolic, int diastolic, int heartRate, int respiratoryRate) {
     Patient patient = Patient.builder().age(age)
         .anthropomorphic(a -> a.height(height).weight(weight))
@@ -27,7 +27,10 @@ class PatientTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"1; 2; 3; 4; 5; 6; 7", "-1; -2; -3; -4; -5; -6; 1000"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+       1 |  2 |  3 |  4 |  5 |  6 |    7
+      -1 | -2 | -3 | -4 | -5 | -6 | 1000
+      """)
   void buildOverhead(int age, int height, int weight, int systolic, int diastolic, int heartRate, int respiratoryRate) {
     Patient patient = Patient.builder().age(age)
         .anthropomorphic(a -> a.height(height).weight(weight))

@@ -8,7 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RatesTest {
   @ParameterizedTest
-  @CsvSource(value = {"68; 22", "68; 800"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      68 |  22
+      68 | 800
+      """)
   void build(int heart, int respiratory) {
     Rates rates = Rates.builder().heart(heart).respiratory(respiratory).build();
     assertAll(rates.toString(),
@@ -18,7 +21,11 @@ class RatesTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"150; 30", "-40; 99", "0; -1"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      150 | 30
+      -40 | 99
+        0 | -1
+      """)
   void buildOverheadRespiratoryRate(int heart, int respiratory) {
     Rates rates = Rates.builder().heart(heart).respiratory(respiratory).build();
     assertAll(rates.toString(),
@@ -28,7 +35,10 @@ class RatesTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"150; 901", "0; 100"}, delimiter = ';')
+  @CsvSource(delimiter = '|', textBlock = """
+      150 | 901
+        0 | 100
+      """)
   void buildOverheadPeakExpiratoryFlowRate(int heart, int respiratory) {
     Rates rates = Rates.builder().heart(heart).respiratory(respiratory).build();
     assertAll(rates.toString(),
