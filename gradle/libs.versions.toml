@@ -9,7 +9,7 @@ jgitver = '0.10.0-rc03'
 
 jspecify = '1.0.0'
 junit = '5.11.4'
-assertj = '3.27.0'
+assertj = '3.27.1'
 
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
