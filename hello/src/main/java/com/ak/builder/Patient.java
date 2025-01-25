@@ -5,7 +5,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.Objects;
 import java.util.function.Function;
 
-public sealed interface Patient permits PatientRecord {
+public sealed interface Patient {
   int age();
 
   Anthropomorphic anthropomorphic();
@@ -74,16 +74,15 @@ public sealed interface Patient permits PatientRecord {
       );
     }
   }
-}
 
-record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure,
-                     Rates rates) implements Patient {
-  PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure, Rates rates) {
-    this.age = Math.clamp(age, 12, 100);
-    this.anthropomorphic = anthropomorphic;
-    this.bloodPressure = bloodPressure;
-    this.rates = rates;
+  record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure,
+                       Rates rates) implements Patient {
+    public PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure, Rates rates) {
+      this.age = Math.clamp(age, 12, 100);
+      this.anthropomorphic = anthropomorphic;
+      this.bloodPressure = bloodPressure;
+      this.rates = rates;
+    }
   }
 }
-
 

@@ -1,6 +1,6 @@
 package com.ak.builder;
 
-public sealed interface Rates permits RatesRecord {
+public sealed interface Rates {
   int heart();
 
   int respiratory();
@@ -41,20 +41,19 @@ public sealed interface Rates permits RatesRecord {
       return new RatesRecord(heart, respiratory);
     }
   }
-}
 
-record RatesRecord(int heart, int respiratory) implements Rates {
-  RatesRecord(int heart, int respiratory) {
-    this.heart = Math.clamp(heart, 40, 140);
-    int rr = Math.clamp(respiratory, 4, 900);
-    if (rr > 99) {
-      this.respiratory = Math.clamp(respiratory, 100, 900);
-    }
-    else {
-      this.respiratory = Math.clamp(respiratory, 4, 28);
+  record RatesRecord(int heart, int respiratory) implements Rates {
+    public RatesRecord(int heart, int respiratory) {
+      this.heart = Math.clamp(heart, 40, 140);
+      int rr = Math.clamp(respiratory, 4, 900);
+      if (rr > 99) {
+        this.respiratory = Math.clamp(respiratory, 100, 900);
+      }
+      else {
+        this.respiratory = Math.clamp(respiratory, 4, 28);
+      }
     }
   }
 }
-
 
 
