@@ -11,6 +11,9 @@ jspecify = '1.0.0'
 junit = '5.11.4'
 assertj = '3.27.3'
 
+slf4j = '2.1.0-alpha1'
+logback = '1.5.16'
+
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
 sonarqube = { id = 'org.sonarqube', version.ref = 'sonarqube' }
@@ -29,6 +32,9 @@ junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api' }
 junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine' }
 junit-platform-launcher = { module = 'org.junit.platform:junit-platform-launcher' }
 assertj = { module = 'org.assertj:assertj-core', version.ref = 'assertj' }
+
+slf4j = { module = 'org.slf4j:slf4j-api', version.ref = 'slf4j' }
+logback = { module = 'ch.qos.logback:logback-classic', version.ref = 'logback' }
 
 [bundles]
 test-implementation = ['junit-jupiter-api', 'assertj']

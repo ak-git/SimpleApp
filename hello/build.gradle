@@ -6,6 +6,9 @@ plugins {
 
 dependencies {
     implementation libs.jspecify
+    implementation libs.slf4j
+    runtimeOnly libs.logback
+
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test.implementation
     testCompileOnly libs.bundles.test.compile
