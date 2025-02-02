@@ -9,11 +9,11 @@ RUN groupadd -g 1234 customgroup && \
 USER customuser
 
 # Copy the app files from host machine to image filesystem
-COPY --link hello/build/libs/hello.jar /home/customuser/hello.jar
+COPY --link hello/build/libs/hello-all.jar /home/customuser/hello-all.jar
 
 # Set the directory for executing future commands
 WORKDIR /home/customuser
 
 # Run the Main class
 # https://docs.docker.com/reference/build-checks/json-args-recommended/
-ENTRYPOINT ["java", "-jar", "/home/customuser/hello.jar"]
+ENTRYPOINT ["java", "-jar", "/home/customuser/hello-all.jar"]

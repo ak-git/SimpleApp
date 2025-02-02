@@ -17,7 +17,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'hello.jar'
+    archiveVersion = ''
 }
 
 application {
