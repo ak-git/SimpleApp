@@ -16,6 +16,10 @@ dependencies {
     testRuntimeOnly libs.bundles.test.runtime
 }
 
+shadowJar {
+    archiveFileName = 'hello.jar'
+}
+
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
