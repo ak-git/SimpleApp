@@ -9,7 +9,7 @@ RUN groupadd -g 1234 customgroup && \
 USER customuser
 
 # Copy the app files from host machine to image filesystem
-COPY --link hello/build/libs/hello-2025.1.0-12-all.jar /home/customuser/hello.jar
+COPY --link hello/build/libs/hello-2025.1.0-14-all.jar /home/customuser/hello.jar
 
 # Set the directory for executing future commands
 WORKDIR /home/customuser
