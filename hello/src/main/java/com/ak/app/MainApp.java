@@ -1,14 +1,17 @@
 package com.ak.app;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.ZonedDateTime;
 
 public class MainApp {
+  private static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
+
   private MainApp() {
   }
 
   public static void main(String[] args) {
-    LoggerFactory.getLogger(MainApp.class).info("Hello World {}!", ZonedDateTime.now());
+    LOGGER.atInfo().setMessage(() -> "Hello World!").addKeyValue("time", ZonedDateTime::now).log();
   }
 }
