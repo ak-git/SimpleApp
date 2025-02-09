@@ -4,5 +4,4 @@ module test.ak.app {
   requires org.assertj.core;
   requires org.junit.jupiter.api;
   opens test.ak.app to org.junit.platform.commons;
-  exports test.ak.app;
 }
