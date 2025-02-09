@@ -1,11 +1,13 @@
 package com.ak.app;
 
-import com.ak.builder.Patient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class MainApp {
-  private static final Logger LOGGER = Logger.getLogger(MainApp.class.getName());
+  private static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
 
   private MainApp() {
   }

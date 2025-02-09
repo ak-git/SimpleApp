@@ -1,6 +1,6 @@
 module com.ak.app {
   requires org.jspecify;
-  requires java.logging;
+  requires org.slf4j;
 
   exports com.ak.app;
 }
