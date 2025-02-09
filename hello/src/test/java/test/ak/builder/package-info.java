@@ -1,4 +1,4 @@
 @NullMarked
-package com.ak.app;
+package test.ak.builder;
 
 import org.jspecify.annotations.NullMarked;

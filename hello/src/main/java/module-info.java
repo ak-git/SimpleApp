@@ -3,4 +3,5 @@ module com.ak.app {
   requires org.slf4j;
 
   exports com.ak.app;
+  exports com.ak.builder;
 }

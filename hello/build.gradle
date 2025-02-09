@@ -2,7 +2,6 @@ plugins {
     id 'java-library'
     id 'application'
     alias(libs.plugins.johnrengelman.shadow)
-    alias(libs.plugins.javamodularity.moduleplugin)
 }
 
 dependencies {

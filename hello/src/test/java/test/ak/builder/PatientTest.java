@@ -1,5 +1,6 @@
-package com.ak.builder;
+package test.ak.builder;
 
+import com.ak.builder.Patient;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

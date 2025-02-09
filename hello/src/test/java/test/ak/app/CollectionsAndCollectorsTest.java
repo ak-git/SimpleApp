@@ -1,4 +1,4 @@
-package com.ak.app;
+package test.ak.app;
 
 import org.junit.jupiter.api.Test;
 
