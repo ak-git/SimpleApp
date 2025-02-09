@@ -1,10 +1,8 @@
 package com.ak.app;
 
+import com.ak.builder.Patient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 public class MainApp {
   private static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
@@ -25,6 +23,6 @@ public class MainApp {
             r.heart(68).respiratory(22)
         )
         .build();
-    LOGGER.info(patient::toString);
+    LOGGER.atInfo().setMessage(patient::toString).log();
   }
 }

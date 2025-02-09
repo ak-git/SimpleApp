@@ -1,11 +1,11 @@
 package com.ak.util;
 
+import org.slf4j.LoggerFactory;
+
 import java.lang.ref.Cleaner;
 import java.util.Objects;
 import java.util.concurrent.*;
 import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class ConcurrentCache<A, V> implements Function<A, V>, Cleaner.Cleanable {
   private final ConcurrentMap<A, Future<V>> cache = new ConcurrentHashMap<>();
@@ -39,7 +39,7 @@ public final class ConcurrentCache<A, V> implements Function<A, V>, Cleaner.Clea
       }
       catch (InterruptedException e) {
         Thread.currentThread().interrupt();
-        Logger.getLogger(getClass().getName()).log(Level.INFO, e, e::getMessage);
+        LoggerFactory.getLogger(getClass().getName()).atInfo().setCause(e).log();
       }
       finally {
         f.cancel(true);
