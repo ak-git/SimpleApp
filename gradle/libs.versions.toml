@@ -13,7 +13,7 @@ junit = '5.12.1'
 assertj = '3.27.3'
 
 slf4j = '2.1.0-alpha1'
-logback = '1.5.17'
+logback = '1.5.18'
 
 [plugins]
 javamodularity-moduleplugin = { id = 'org.javamodularity.moduleplugin', version.ref = 'javamodularity-moduleplugin' }
