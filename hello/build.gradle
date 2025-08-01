@@ -2,7 +2,6 @@ plugins {
     id 'java-library'
     id 'application'
     alias(libs.plugins.gradleup.shadow)
-    alias(libs.plugins.javamodularity.moduleplugin)
 }
 
 dependencies {
@@ -23,12 +22,7 @@ shadowJar {
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
-}
-
-tasks {
-    test {
-        moduleOptions {
-            runOnClasspath = true
-        }
-    }
+    applicationDefaultJvmArgs = [
+            '--add-opens', 'java.base/jdk.internal.module=ALL-UNNAMED'
+    ]
 }
