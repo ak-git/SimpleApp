@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'application'
-    alias(libs.plugins.gradleup.shadow)
 }
 
 dependencies {
@@ -13,10 +12,6 @@ dependencies {
     testImplementation libs.bundles.test.implementation
     testCompileOnly libs.bundles.test.compile
     testRuntimeOnly libs.bundles.test.runtime
-}
-
-shadowJar {
-    archiveVersion = ''
 }
 
 application {
