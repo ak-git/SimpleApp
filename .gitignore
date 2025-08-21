@@ -38,3 +38,4 @@ profile
 
 # Logs
 *.log
+log*.gz
