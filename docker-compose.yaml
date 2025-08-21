@@ -2,3 +2,8 @@ services:
   simple-app:
     container_name: simple-app
     image: a002k/simple-app:latest
+    volumes:
+      - simple-app:/home/app-user/
+
+volumes:
+  simple-app:
