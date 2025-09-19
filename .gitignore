@@ -39,3 +39,4 @@ profile
 # Logs
 *.log
 log*.gz
+log*.tmp
