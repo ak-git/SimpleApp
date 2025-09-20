@@ -7,6 +7,6 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 class MainAppTest {
   @Test
   void testMain() {
-    assertThatNoException().isThrownBy(() -> MainApp.main(new String[] {}));
+    assertThatNoException().isThrownBy(MainApp::main);
   }
 }
