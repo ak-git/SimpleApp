@@ -12,7 +12,7 @@ public class MainApp {
   private MainApp() {
   }
 
-  public static void main(String[] args) {
+  public static void main() {
     LOGGER.atInfo().setMessage(() -> "Hello World!").addKeyValue("time", () -> ZonedDateTime.now(ZoneId.systemDefault())).log();
   }
 }
