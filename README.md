@@ -21,7 +21,7 @@
 ### Update version and add git tag
 
 ```shell
-git tag 2025.08
+git tag 2025.09
 ```
 
 ## Update dependencies
