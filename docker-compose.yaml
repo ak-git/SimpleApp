@@ -3,7 +3,7 @@ services:
     container_name: simple-app
     image: a002k/simple-app:latest
     volumes:
-      - simple-app:/home/runner/
+      - simple-app:/home/runner/data
 
 volumes:
   simple-app:

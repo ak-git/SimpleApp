@@ -10,7 +10,7 @@ WORKDIR /home/runner
 
 # Extract from .tar and copy the app files from host machine to image filesystem
 ADD hello/build/distributions/hello-*.tar .
-RUN mv hello-* app && chown -R runner:runner-group app
+RUN mv hello-* app && chown -R runner:runner-group app && mkdir data && chown -R runner:runner-group data
 
 # Switch to the custom user
 USER runner
