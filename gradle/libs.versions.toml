@@ -10,7 +10,7 @@ junit = '6.0.2'
 assertj = '4.0.0-M1'
 
 slf4j = '2.1.0-alpha1'
-logback = '1.5.26'
+logback = '1.5.27'
 
 [plugins]
 sonarqube = { id = 'org.sonarqube', version.ref = 'sonarqube' }
