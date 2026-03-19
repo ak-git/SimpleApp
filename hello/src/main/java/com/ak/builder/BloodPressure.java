@@ -20,6 +20,15 @@ public sealed interface BloodPressure {
   }
 
   final class BloodPressureBuilder implements Step1, Step2, Builder<BloodPressure> {
+    private record BloodPressureRecord(int systolic, int diastolic) implements BloodPressure {
+      private BloodPressureRecord(int systolic, int diastolic) {
+        IntUnaryOperator pressureLimits = bp -> Math.clamp(bp, 10, 220);
+        int s = pressureLimits.applyAsInt(systolic);
+        int d = pressureLimits.applyAsInt(diastolic);
+        this.systolic = Math.clamp(Math.max(s, d), 50, 220);
+        this.diastolic = Math.clamp(Math.min(s, d), 10, 130);
+      }
+    }
     private int systolic;
     private int diastolic;
 
@@ -41,16 +50,6 @@ public sealed interface BloodPressure {
     @Override
     public BloodPressure build() {
       return new BloodPressureRecord(systolic, diastolic);
-    }
-  }
-
-  record BloodPressureRecord(int systolic, int diastolic) implements BloodPressure {
-    public BloodPressureRecord(int systolic, int diastolic) {
-      IntUnaryOperator pressureLimits = bp -> Math.clamp(bp, 10, 220);
-      int s = pressureLimits.applyAsInt(systolic);
-      int d = pressureLimits.applyAsInt(diastolic);
-      this.systolic = Math.clamp(Math.max(s, d), 50, 220);
-      this.diastolic = Math.clamp(Math.min(s, d), 10, 130);
     }
   }
 }

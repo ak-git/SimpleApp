@@ -18,6 +18,13 @@ public sealed interface Anthropomorphic {
   }
 
   final class AnthropomorphicBuilder implements Anthropomorphic.Step1, Anthropomorphic.Step2, Builder<Anthropomorphic> {
+    private record AnthropomorphicRecord(int height, int weight) implements Anthropomorphic {
+      private AnthropomorphicRecord(int height, int weight) {
+        this.height = Math.clamp(height, 140, 220);
+        this.weight = Math.clamp(weight, 40, 130);
+      }
+    }
+
     private int height;
     private int weight;
 
@@ -38,14 +45,7 @@ public sealed interface Anthropomorphic {
 
     @Override
     public Anthropomorphic build() {
-      return new Anthropomorphic.AnthropomorphicRecord(height, weight);
-    }
-  }
-
-  record AnthropomorphicRecord(int height, int weight) implements Anthropomorphic {
-    public AnthropomorphicRecord(int height, int weight) {
-      this.height = Math.clamp(height, 140, 220);
-      this.weight = Math.clamp(weight, 40, 130);
+      return new AnthropomorphicRecord(height, weight);
     }
   }
 }
