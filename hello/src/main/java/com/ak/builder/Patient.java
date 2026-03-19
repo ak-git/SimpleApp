@@ -15,7 +15,7 @@ public sealed interface Patient {
   Rates rates();
 
   static Step1 builder() {
-    return new PatientRecord.PatientBuilder();
+    return new PatientBuilder();
   }
 
   sealed interface Step1 permits PatientBuilder {
@@ -35,6 +35,16 @@ public sealed interface Patient {
   }
 
   final class PatientBuilder implements Step1, Step2, Step3, Step4, Builder<Patient> {
+    private record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure,
+                                 Rates rates) implements Patient {
+      private PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure, Rates rates) {
+        this.age = Math.clamp(age, 12, 100);
+        this.anthropomorphic = anthropomorphic;
+        this.bloodPressure = bloodPressure;
+        this.rates = rates;
+      }
+    }
+
     private int age;
     private @Nullable Anthropomorphic anthropomorphic;
     private @Nullable BloodPressure bloodPressure;
@@ -72,16 +82,6 @@ public sealed interface Patient {
       return new PatientRecord(age,
           Objects.requireNonNull(anthropomorphic), Objects.requireNonNull(bloodPressure), Objects.requireNonNull(rates)
       );
-    }
-  }
-
-  record PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure,
-                       Rates rates) implements Patient {
-    public PatientRecord(int age, Anthropomorphic anthropomorphic, BloodPressure bloodPressure, Rates rates) {
-      this.age = Math.clamp(age, 12, 100);
-      this.anthropomorphic = anthropomorphic;
-      this.bloodPressure = bloodPressure;
-      this.rates = rates;
     }
   }
 }
