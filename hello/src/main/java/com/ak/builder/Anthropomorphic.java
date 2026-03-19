@@ -9,11 +9,11 @@ public sealed interface Anthropomorphic {
     return new AnthropomorphicBuilder();
   }
 
-  sealed interface Step1 permits AnthropomorphicBuilder {
+  sealed interface Step1 {
     Step2 height(int height);
   }
 
-  sealed interface Step2 permits AnthropomorphicBuilder {
+  sealed interface Step2 {
     Builder<Anthropomorphic> weight(int weight);
   }
 

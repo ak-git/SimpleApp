@@ -18,19 +18,19 @@ public sealed interface Patient {
     return new PatientBuilder();
   }
 
-  sealed interface Step1 permits PatientBuilder {
+  sealed interface Step1 {
     Step2 age(int age);
   }
 
-  sealed interface Step2 permits PatientBuilder {
+  sealed interface Step2 {
     Step3 anthropomorphic(Function<Anthropomorphic.Step1, Builder<Anthropomorphic>> builderFunction);
   }
 
-  sealed interface Step3 permits PatientBuilder {
+  sealed interface Step3 {
     Step4 bloodPressure(Function<BloodPressure.Step1, Builder<BloodPressure>> builderFunction);
   }
 
-  sealed interface Step4 permits PatientBuilder {
+  sealed interface Step4 {
     Builder<Patient> rates(Function<Rates.Step1, Builder<Rates>> builderFunction);
   }
 

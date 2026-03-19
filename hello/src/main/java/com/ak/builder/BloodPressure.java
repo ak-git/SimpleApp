@@ -11,11 +11,11 @@ public sealed interface BloodPressure {
     return new BloodPressureBuilder();
   }
 
-  sealed interface Step1 permits BloodPressureBuilder {
+  sealed interface Step1 {
     Step2 systolic(int systolic);
   }
 
-  sealed interface Step2 permits BloodPressureBuilder {
+  sealed interface Step2 {
     Builder<BloodPressure> diastolic(int diastolic);
   }
 
@@ -29,6 +29,7 @@ public sealed interface BloodPressure {
         this.diastolic = Math.clamp(Math.min(s, d), 10, 130);
       }
     }
+
     private int systolic;
     private int diastolic;
 

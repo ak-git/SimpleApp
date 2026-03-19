@@ -9,11 +9,11 @@ public sealed interface Rates {
     return new RatesBuilder();
   }
 
-  sealed interface Step1 permits RatesBuilder {
+  sealed interface Step1 {
     Step2 heart(int heart);
   }
 
-  sealed interface Step2 permits RatesBuilder {
+  sealed interface Step2 {
     Builder<Rates> respiratory(int respiratory);
   }
 
