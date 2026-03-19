@@ -10,7 +10,7 @@ public class MainApp {
   private MainApp() {
   }
 
-  public static void main(String[] args) {
+  public static void main() {
     Patient patient = Patient.builder()
         .age(18)
         .anthropomorphic(a ->

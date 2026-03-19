@@ -6,7 +6,6 @@ plugins {
     id 'jacoco'
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
-    alias(libs.plugins.nebula.lint)
     alias(libs.plugins.sonarqube)
     alias(libs.plugins.jacocolog)
     alias(libs.plugins.jgitver)
@@ -52,7 +51,7 @@ allprojects {
     }
 
     jacoco {
-        toolVersion = '0.8.12'
+        toolVersion = '0.8.14'
     }
 
     jacocoTestReport {
@@ -73,7 +72,7 @@ subprojects {
 
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(23)
+            languageVersion = JavaLanguageVersion.of(25)
         }
     }
 
