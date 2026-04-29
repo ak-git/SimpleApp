@@ -48,7 +48,7 @@ jobs:
       - name: Compute version
         run: |
           gradle printVersion
-          echo "BUILD_VERSION=$(gradle printVersion | awk '{ print $1 }')" >> $GITHUB_ENV
+          echo "BUILD_VERSION=$(gradle printVersion -q)" >> $GITHUB_ENV
       - name: Login to Docker Hub
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
