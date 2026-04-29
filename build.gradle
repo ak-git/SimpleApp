@@ -15,10 +15,6 @@ spotbugs {
     reportLevel = Confidence.valueOf('HIGH')
 }
 
-semver {
-    defaultPreRelease = ""
-}
-
 tasks.spotbugsMain {
     reports.create('html') {
         required = true

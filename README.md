@@ -8,13 +8,19 @@
 
 ## [Semantic versioning](https://zoltanaltfatter.com/2020/04/10/semantic-versioning-with-jgitver/)
 
-### Plugin [com.github.jmongard.git-semver-plugin](https://plugins.gradle.org/plugin/com.github.jmongard.git-semver-plugin)
+### Plugin [com.github.jmongard.git-semver-plugin](https://github.com/jmongard/Git.SemVersioning.Gradle)
 
 ```shell
 ./gradlew printVersion
 ```
 
-### Update version and add git tag
+### Update version
+
+```shell
+gradle releaseVersion
+```
+
+### Add git tag
 
 ```shell
 git tag 2026.04
