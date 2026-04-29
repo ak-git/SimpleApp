@@ -11,7 +11,7 @@
 ### Plugin [com.github.jmongard.git-semver-plugin](https://github.com/jmongard/Git.SemVersioning.Gradle)
 
 ```shell
-./gradlew printVersion
+gradle printVersion
 ```
 
 ### Update version
