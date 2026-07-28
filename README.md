@@ -28,7 +28,7 @@ git tag 2026.04
 
 ## Update dependencies
 
-### Plugin [com.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)
+### Plugin [io.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)
 
 ```shell
 ./gradlew dependencyUpdates

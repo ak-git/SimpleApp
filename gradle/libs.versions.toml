@@ -16,7 +16,7 @@ logback = '1.6.1'
 sonarqube = { id = 'org.sonarqube', version.ref = 'sonarqube' }
 jacocolog = { id = 'org.barfuin.gradle.jacocolog', version.ref = 'jacocolog' }
 spotbugs = { id = 'com.github.spotbugs', version.ref = 'spotbugs' }
-ben-manes-versions = { id = 'com.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
+ben-manes-versions = { id = 'io.github.ben-manes.versions', version.ref = 'ben-manes-versions' }
 git-semver = { id = 'com.github.jmongard.git-semver-plugin', version.ref = 'git-semver' }
 
 [libraries]
