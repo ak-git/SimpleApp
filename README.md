@@ -8,16 +8,16 @@
 
 ## [Semantic versioning](https://zoltanaltfatter.com/2020/04/10/semantic-versioning-with-jgitver/)
 
-### Plugin [com.github.jmongard.git-semver-plugin](https://github.com/jmongard/Git.SemVersioning.Gradle)
+### Plugin [axion-release-plugin](https://github.com/allegro/axion-release-plugin)
 
 ```shell
-gradle printVersion
+gradle currentVersion -q -Prelease.quiet
 ```
 
 ### Update version
 
 ```shell
-gradle releaseVersion
+gradle release
 ```
 
 ### Add git tag
