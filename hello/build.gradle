@@ -23,19 +23,6 @@ application {
     mainClass = 'com.ak.app.MainApp'
 }
 
-repositories {
-    gradlePluginPortal()
-    mavenCentral()
-    maven { url = 'https://jitpack.io' }
-    maven {
-        url = "https://artifacts.codegenomeproject.org/maven"
-        credentials {
-            username = providers.environmentVariable("CODE_GENOME_USERNAME").get()
-            password = providers.environmentVariable("CODE_GENOME_TOKEN").get()
-        }
-    }
-}
-
 rewrite {
     activeRecipe('org.openrewrite.java.testing.assertj.JUnitToAssertj')
 }
