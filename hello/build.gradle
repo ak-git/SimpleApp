@@ -25,6 +25,8 @@ application {
 
 rewrite {
     activeRecipe('org.openrewrite.java.testing.assertj.JUnitToAssertj')
+    activeRecipe("org.openrewrite.java.testing.assertj.Assertj")
+    setExportDatatables(true)
 }
 
 tasks.withType(Test).configureEach {
