@@ -6,8 +6,8 @@ pluginManagement {
         maven {
             url = "https://artifacts.codegenomeproject.org/maven"
             credentials {
-                username = providers.gradleProperty("codeGenomeUsername").get()
-                password = providers.gradleProperty("codeGenomeToken").get()
+                username = providers.environmentVariable("codeGenomeUsername").get()
+                password = providers.environmentVariable("codeGenomeToken").get()
             }
         }
     }
