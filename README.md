@@ -11,13 +11,13 @@
 ### Plugin [axion-release-plugin](https://github.com/allegro/axion-release-plugin)
 
 ```shell
-gradle currentVersion -q -Prelease.quiet
+./gradlew currentVersion -q -Prelease.quiet
 ```
 
 ### Update version
 
 ```shell
-gradle release
+./gradlew release
 ```
 
 ### Add git tag
@@ -40,6 +40,16 @@ git tag 2026.04
 
 ```shell
 ./gradlew buildHealth
+```
+
+## Rewrite
+
+### [Migrate JUnit asserts to AssertJ](https://docs.openrewrite.org/recipes/java/testing/assertj/junittoassertj)
+
+Get token https://artifacts.codegenomeproject.org/maven/
+
+```shell
+./gradlew rewriteRun
 ```
 
 ## Run docker image
