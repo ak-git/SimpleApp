@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class MainAppTest {
   @Test
-  void testMain() {
+  void main() {
     Assertions.assertThatNoException().isThrownBy(MainApp::main);
   }
 }

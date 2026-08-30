@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'application'
+    alias(libs.plugins.openrewrite)
 }
 
 dependencies {
@@ -13,9 +14,19 @@ dependencies {
     testCompileOnly libs.jspecify
     testCompileOnly libs.bundles.test.compile
     testRuntimeOnly libs.bundles.test.runtime
+
+    rewrite libs.rewrite.testing.frameworks
 }
 
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
+}
+
+rewrite {
+    activeRecipe('org.openrewrite.java.testing.assertj.JUnitToAssertj')
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }

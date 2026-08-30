@@ -95,4 +95,11 @@ subprojects {
         }
         maxHeapSize = '1G'
     }
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = 'https://jitpack.io' }
+        maven { url = 'https://artifacts.codegenomeproject.org/maven' }
+    }
 }
