@@ -1,11 +1,11 @@
 [versions]
-javamodularity-moduleplugin = '1.8.15'
-sonarqube = '6.0.1.5171'
-jacocolog = '3.1.0'
-spotbugs = '6.0.27'
-ben-manes-versions = '0.51.0'
-nebula-lint = '20.3.1'
-jgitver = '0.10.0-rc03'
+sonarqube = '7.5.0.8588'
+jacocolog = '4.0.2'
+spotbugs = '6.5.11'
+ben-manes-versions = '0.64.0'
+git-semver = '1.21.4'
+openrewrite = '7.41.0'
+rewrite-testing-frameworks = '3.44.0'
 
 jspecify = '1.0.1'
 junit = '6.1.3'
