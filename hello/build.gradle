@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'application'
-    alias(libs.plugins.openrewrite)
 }
 
 dependencies {
@@ -9,27 +8,17 @@ dependencies {
     implementation libs.commons.math3
 
     compileOnly libs.jspecify
-    implementation libs.slf4j
-    runtimeOnly libs.logback
 
     testImplementation(platform(libs.junit))
     testImplementation libs.bundles.test.implementation
     testCompileOnly libs.jspecify
     testCompileOnly libs.bundles.test.compile
     testRuntimeOnly libs.bundles.test.runtime
-
-    rewrite libs.rewrite.testing.frameworks
 }
 
 application {
     mainModule = 'com.ak.app'
     mainClass = 'com.ak.app.MainApp'
-}
-
-rewrite {
-    activeRecipe('org.openrewrite.java.testing.assertj.JUnitToAssertj')
-    activeRecipe('org.openrewrite.java.testing.assertj.Assertj')
-    setExportDatatables(true)
 }
 
 tasks.withType(Test).configureEach {

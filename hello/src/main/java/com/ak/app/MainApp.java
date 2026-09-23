@@ -9,18 +9,14 @@ import org.jfugue.rhythm.Rhythm;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.ZonedDateTime;
 import java.util.Arrays;
-import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class MainApp {
   private MainApp() {
   }
 
-  public static void main(String[] args) throws IOException {
-    Logger.getLogger(MainApp.class.getName()).info(() -> "Hello word! %s".formatted(ZonedDateTime.now()));
-
+  static void main() throws IOException {
     final int TEMPO_BPM = 1200;
 
     String name = "Bestuzhev";
@@ -58,7 +54,6 @@ public class MainApp {
       }
     }
 
-    Logger.getLogger(MainApp.class.getName()).info(() -> "");
     MidiFileManager.savePatternToMidi(pattern, new File("%s-%02d.midi".formatted(name, 2)));
     player.play(pattern);
   }
