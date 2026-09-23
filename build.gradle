@@ -6,10 +6,9 @@ plugins {
     id 'jacoco'
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.ben.manes.versions)
-    alias(libs.plugins.nebula.lint)
     alias(libs.plugins.sonarqube)
     alias(libs.plugins.jacocolog)
-    alias(libs.plugins.jgitver)
+    alias(libs.plugins.git.semver)
 }
 
 spotbugs {
@@ -39,15 +38,22 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'org.barfuin.gradle.jacocolog'
 
+    version = scmVersion.version
+
     idea {
         module {
+            inheritOutputDirs = true
             downloadJavadoc = true
             downloadSources = true
         }
     }
 
+    sourceSets {
+        main.output.resourcesDir = main.java.classesDirectory
+    }
+
     jacoco {
-        toolVersion = '0.8.12'
+        toolVersion = '0.8.15'
     }
 
     jacocoTestReport {
@@ -68,7 +74,7 @@ subprojects {
 
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(23)
+            languageVersion = JavaLanguageVersion.of(26)
         }
     }
 
@@ -88,5 +94,18 @@ subprojects {
             events 'passed', 'skipped', 'failed'
         }
         maxHeapSize = '1G'
+    }
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = 'https://jitpack.io' }
+        maven {
+            url = "https://artifacts.codegenomeproject.org/maven"
+            credentials {
+                username = providers.environmentVariable('CODE_GENOME_USERNAME').orElse(providers.gradleProperty('codeGenomeUsername')).getOrNull()
+                password = providers.environmentVariable('CODE_GENOME_TOKEN').orElse(providers.gradleProperty('codeGenomeToken')).getOrNull()
+            }
+        }
     }
 }

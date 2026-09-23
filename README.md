@@ -8,25 +8,27 @@
 
 ## [Semantic versioning](https://zoltanaltfatter.com/2020/04/10/semantic-versioning-with-jgitver/)
 
-### Plugin [fr.brouillard.oss.gradle.jgitver](https://github.com/jgitver/gradle-jgitver-plugin)
+### Plugin [axion-release-plugin](https://github.com/allegro/axion-release-plugin)
 
 ```shell
-./gradlew version
+./gradlew currentVersion -q -Prelease.quiet
 ```
 
+### Update version
+
 ```shell
-./gradlew version | grep Version | awk '{ print $2 }'
+./gradlew release
 ```
 
-### Update version and add git tag
+### Add git tag
 
 ```shell
-git tag 2024.11.1
+git tag 2026.04
 ```
 
 ## Update dependencies
 
-### Plugin [com.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)
+### Plugin [io.github.ben-manes.versions](https://github.com/ben-manes/gradle-versions-plugin)
 
 ```shell
 ./gradlew dependencyUpdates
@@ -38,6 +40,16 @@ git tag 2024.11.1
 
 ```shell
 ./gradlew buildHealth
+```
+
+## Rewrite
+
+### [Migrate JUnit asserts to AssertJ](https://docs.openrewrite.org/recipes/java/testing/assertj/junittoassertj)
+
+Get token https://artifacts.codegenomeproject.org/maven/
+
+```shell
+./gradlew rewriteRun
 ```
 
 ## Run docker image
@@ -85,7 +97,6 @@ docker compose down
 ```
 
 [![Github Action Badge](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)](https://github.com/ak-git/SimpleApp/actions/workflows/actions.yml/badge.svg)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f7e44f2278c24e49927d582424b0e2a4)](https://app.codacy.com/gh/ak-git/SimpleApp?utm_source=github.com&utm_medium=referral&utm_content=ak-git/SimpleApp&utm_campaign=Badge_Grade_Settings)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ak-git_SimpleApp&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ak-git_SimpleApp)
