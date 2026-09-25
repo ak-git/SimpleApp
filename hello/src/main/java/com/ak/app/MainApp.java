@@ -9,7 +9,8 @@ import org.jfugue.rhythm.Rhythm;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 public class MainApp {
@@ -19,42 +20,43 @@ public class MainApp {
   static void main() throws IOException {
     final int TEMPO_BPM = 1200;
 
-    String name = "Bestuzhev";
-    int iap = 161;
-    int minutes = 62;
-    double[] dIn = Arrays.copyOf(Training.T_17.doubles(), minutes);
-
-    double[] d = new double[dIn.length + 1];
-    System.arraycopy(dIn, 0, d, 0, dIn.length);
-    d[d.length - 1] = dIn[0];
-
-    PolynomialSplineFunction interpolate = new LinearInterpolator()
-        .interpolate(IntStream.range(0, d.length).asDoubleStream().toArray(), d);
-
-    Player player = new Player();
+    int iap = 166;
     Pattern pattern = null;
 
-    for (int i = 0; i < (d.length - 1) * TEMPO_BPM; ) {
-      double pulsePBM = Math.clamp(interpolate.value(1.0 * i / TEMPO_BPM) * iap / 166.0, 40, 220);
-      int cadence = (int) Math.round(pulsePBM / 2.0);
-      int len = TEMPO_BPM / cadence;
-      i += len;
+    for (Training training : Training.values()) {
+      double[] dIn = training.doubles();
 
-      Rhythm r = new Rhythm();
-      r.addLayer("S" + ".".repeat(len - 1) + ".".repeat(len));
-      r.addLayer(".".repeat(len) + "O" + ".".repeat(len - 1));
-      Pattern rPattern = r.getPattern();
+      double[] d = new double[dIn.length + 1];
+      System.arraycopy(dIn, 0, d, 0, dIn.length);
+      d[d.length - 1] = dIn[0];
 
-      if (pattern == null) {
-        pattern = rPattern;
-        pattern.setTempo(TEMPO_BPM);
+      PolynomialSplineFunction interpolate = new LinearInterpolator()
+          .interpolate(IntStream.range(0, d.length).asDoubleStream().toArray(), d);
+
+      for (int i = 0; i < (d.length - 1) * TEMPO_BPM; ) {
+        double pulsePBM = Math.clamp(interpolate.value(1.0 * i / TEMPO_BPM) * iap / 166.0, 40, 220);
+        int cadence = (int) Math.round(pulsePBM / 2.0);
+        int len = TEMPO_BPM / cadence;
+        i += len;
+
+        Rhythm r = new Rhythm();
+        r.addLayer("S" + ".".repeat(len - 1) + ".".repeat(len));
+        r.addLayer(".".repeat(len) + "O" + ".".repeat(len - 1));
+        Pattern rPattern = r.getPattern();
+
+        if (pattern == null) {
+          pattern = rPattern;
+          pattern.setTempo(TEMPO_BPM);
+        }
+        else {
+          pattern.add(rPattern);
+        }
       }
-      else {
-        pattern.add(rPattern);
-      }
+      String pathname = "%s.midi".formatted(training);
+      MidiFileManager.savePatternToMidi(pattern, new File(pathname));
+      Logger.getLogger(MainApp.class.getName()).log(Level.INFO, () -> "MIDI file saved to %s".formatted(pathname));
     }
-
-    MidiFileManager.savePatternToMidi(pattern, new File("%s-%02d.midi".formatted(name, 2)));
+    Player player = new Player();
     player.play(pattern);
   }
 }
