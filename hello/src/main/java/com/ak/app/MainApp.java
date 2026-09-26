@@ -19,9 +19,7 @@ public class MainApp {
 
   static void main() throws IOException {
     final int TEMPO_BPM = 1200;
-
     int iap = 166;
-    Pattern pattern = null;
 
     for (Training training : Training.values()) {
       double[] dIn = training.doubles();
@@ -32,6 +30,7 @@ public class MainApp {
 
       PolynomialSplineFunction interpolate = new LinearInterpolator()
           .interpolate(IntStream.range(0, d.length).asDoubleStream().toArray(), d);
+      Pattern pattern = null;
 
       for (int i = 0; i < (d.length - 1) * TEMPO_BPM; ) {
         double pulsePBM = Math.clamp(interpolate.value(1.0 * i / TEMPO_BPM) * iap / 166.0, 40, 220);
@@ -55,8 +54,10 @@ public class MainApp {
       String pathname = "%s.midi".formatted(training);
       MidiFileManager.savePatternToMidi(pattern, new File(pathname));
       Logger.getLogger(MainApp.class.getName()).log(Level.INFO, () -> "MIDI file saved to %s".formatted(pathname));
+      if (training == Training.values()[Training.values().length - 1]) {
+        Player player = new Player();
+        player.play(pattern);
+      }
     }
-    Player player = new Player();
-    player.play(pattern);
   }
 }
